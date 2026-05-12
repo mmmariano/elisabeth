@@ -1,0 +1,2255 @@
+        :root {
+            --primary-gold: #ae9052;
+            --gold-gradient: linear-gradient(90deg, #ae9052 0%, #d9c5a1 50%, #b4975c 100%);
+            --btn-green: linear-gradient(90deg, #0b6f2a 0%, #18c95a 50%, #0b6f2a 100%);
+            --bg-white: #ffffff;
+            --bg-gray: #f4f4f4;
+            --text-dark: #1a1a1a;
+            --text-light: #666666;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Inter', sans-serif; 
+            color: var(--text-dark);
+            line-height: 1.5;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 { font-family: 'Blinker', sans-serif; text-transform: uppercase; line-height: 1.1; }
+
+        .headline-gradient {
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 800;
+        }
+
+        .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+
+        /* --- HERO ATUALIZADO COM BACKGROUND --- */
+        .hero {
+            /* Adiciona a imagem e uma camada preta transparente para o texto não sumir */
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('background-hero.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* Opcional: dá um efeito de profundidade ao rolar */
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            padding: 40px 0;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-grid { display: grid; grid-template-columns: 1fr 400px; gap: 30px; align-items: center; }
+        .hero-text h1 { font-size: 3rem; margin: 15px 0; color: white; }
+        .hero-text p { font-size: 1.1rem; color: #ccc; margin-bottom: 25px; }
+        
+        .hero-info { border-left: 3px solid var(--primary-gold); padding-left: 15px; margin-bottom: 25px; font-size: 0.95rem; }
+        .hero-image img {
+    width: 100%;
+    max-width: 400px;
+    display: block;
+    /* Adiciona o brilho dourado em volta da silhueta */
+    filter: drop-shadow(0 0 25px rgba(174, 144, 82, 0.4));
+    mask-image: linear-gradient(to top, transparent 0%, black 15%);
+    -webkit-mask-image: linear-gradient(to top, transparent 0%, black 15%);
+}
+
+        /* --- BOTÕES --- */
+        .btn-cta {
+            display: inline-block;
+            padding: 18px 35px;
+            background: var(--btn-green);
+            color: #fff;
+            font-weight: 800;
+            text-decoration: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            box-shadow: 0 10px 20px rgba(11, 111, 42, 0.2);
+            transition: 0.3s;
+            text-align: center;
+        }
+        .btn-cta:hover { transform: scale(1.03); filter: brightness(1.1); }
+
+        .floating-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            display: none;
+        }
+
+        /* --- SEÇÕES ALTERNADAS --- */
+        section { padding: 70px 0; }
+        .bg-white { background-color: var(--bg-white); }
+        .bg-gray { background-color: var(--bg-gray); }
+
+        .section-title { text-align: center; font-size: 2.2rem; margin-bottom: 40px; color: var(--text-dark); }
+
+        /* --- BLOCOS DE CONTEÚDO --- */
+        .flex-grid { display: flex; align-items: center; gap: 40px; }
+        .flex-grid.reverse { flex-direction: row-reverse; }
+        .flex-grid > div { flex: 1; }
+        
+        .small-img { max-width: 450px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+
+        .check-list { list-style: none; }
+        .check-list li { margin-bottom: 12px; display: flex; align-items: flex-start; gap: 10px; font-weight: 500; }
+        .check-list li::before { content: '✓'; color: #18c95a; font-weight: 800; }
+        .x-list li::before { content: '✕'; color: #ff4d4d; }
+
+        /* --- EFEITO POST-IT / COLLAGE --- */
+        .expert-collage {
+            position: relative;
+            width: 320px;
+            height: 380px;
+            margin: 0 auto;
+        }
+        .postit {
+            position: absolute;
+            border: 6px solid #fff;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+            background: #fff;
+        }
+        .img-main { width: 260px; z-index: 3; top: 20px; left: 20px; transform: rotate(-2deg); }
+        .img-1 { width: 150px; z-index: 2; right: -10px; top: 0; transform: rotate(8deg); }
+        .img-2 { width: 160px; z-index: 1; bottom: 10px; left: -20px; transform: rotate(-10deg); }
+
+        /* --- OFERTA --- */
+        .offer-card {
+            background: #fff;
+            border: 2px solid var(--primary-gold);
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        /* --- ESCASSEZ --- */
+        .scarcity {
+            background: #700;
+            color: #fff;
+            text-align: center;
+            padding: 30px 0;
+            font-weight: 700;
+            border-top: 4px solid #f00;
+        }
+
+        /* --- RESPONSIVIDADE --- */
+        @media (max-width: 768px) {
+            .hero-grid, .flex-grid { flex-direction: column; text-align: center; display: block; }
+            .hero-text h1 { font-size: 2.2rem; }
+            .hero-image { margin-top: 30px; }
+            .hero-image img { max-width: 280px; margin: 0 auto; }
+            .small-img { width: 100%; margin-top: 20px; }
+            .expert-collage { transform: scale(0.8); }
+        }
+/* --- BOTÃO PREMIUM (ESTILO GLOW) --- */
+.btn-cta {
+    position: relative;
+    display: inline-block;
+    padding: 22px 50px;
+    background: var(--btn-green);
+    color: #fff;
+    font-weight: 800;
+    text-decoration: none;
+    border-radius: 14px;
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    overflow: hidden; /* Para o brilho não sair do botão */
+    box-shadow: 0 0 20px rgba(24, 201, 90, 0.4);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255,255,255,0.3);
+}
+
+/* Efeito de reflexo passando pelo botão */
+.btn-cta::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(255, 255, 255, 0.4),
+        transparent
+    );
+    transition: all 0.5s;
+    animation: shine 3s infinite;
+}
+
+@keyframes shine {
+    0% { left: -100%; }
+    20% { left: 100%; }
+    100% { left: 100%; }
+}
+
+.btn-cta:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 0 40px rgba(24, 201, 90, 0.6);
+}
+
+/* --- NOTIFICAÇÕES PIX (ESTILO IPHONE/GLASSMORPISM) --- */
+.pix-notification {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.1); /* Fundo transparente */
+    backdrop-filter: blur(12px); /* Efeito de vidro fosco */
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    padding: 12px 18px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    z-index: 10;
+    width: 250px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+    animation: float 4s ease-in-out infinite;
+}
+
+.pix-icon {
+    width: 35px;
+    height: 35px;
+    background: #00D64B;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.pix-content b {
+    display: block;
+    font-size: 0.85rem;
+    color: #fff;
+    margin-bottom: 2px;
+}
+
+.pix-content p {
+    font-size: 0.75rem !important;
+    color: #00FF66 !important;
+    margin: 0 !important;
+    font-weight: 600;
+}
+
+/* Posicionamento */
+.pix-1 { top: 15%; right: -30px; animation-delay: 0s; }
+.pix-2 { top: 45%; right: -60px; animation-delay: 1.5s; }
+.pix-3 { top: 75%; right: -20px; animation-delay: 0.8s; }
+
+@keyframes float {
+    0%, 100% { transform: translateY(0) translateX(0); }
+    50% { transform: translateY(-15px) translateX(5px); }
+}
+.btn-cta {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 22px 50px;
+    background: var(--btn-green);
+    color: #fff;
+    font-weight: 800;
+    text-decoration: none;
+    border-radius: 16px;
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.4s ease;
+    border: 1px solid rgba(255,255,255,0.4);
+    /* Sombra pulsante verde */
+    box-shadow: 0 0 0 0 rgba(24, 201, 90, 0.7);
+    animation: pulse-glow 2s infinite;
+    overflow: hidden;
+}
+
+@keyframes pulse-glow {
+    0% { box-shadow: 0 0 0 0 rgba(24, 201, 90, 0.7); }
+    70% { box-shadow: 0 0 20px 15px rgba(24, 201, 90, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(24, 201, 90, 0); }
+}
+
+/* Faixa de brilho (reflexo) */
+.btn-cta::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -60%;
+    width: 20%;
+    height: 200%;
+    background: rgba(255, 255, 255, 0.6);
+    transform: rotate(30deg);
+    transition: all 0.5s;
+    animation: mirror-shine 4s infinite;
+}
+
+@keyframes mirror-shine {
+    0% { left: -60%; }
+    15% { left: 120%; }
+    100% { left: 120%; }
+}
+.btn-cta {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 22px 50px;
+    background: var(--btn-green);
+    color: #fff;
+    font-weight: 800;
+    text-decoration: none;
+    border-radius: 16px;
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.4s ease;
+    border: 1px solid rgba(255,255,255,0.4);
+    /* Sombra pulsante verde */
+    box-shadow: 0 0 0 0 rgba(24, 201, 90, 0.7);
+    animation: pulse-glow 2s infinite;
+    overflow: hidden;
+}
+
+@keyframes pulse-glow {
+    0% { box-shadow: 0 0 0 0 rgba(24, 201, 90, 0.7); }
+    70% { box-shadow: 0 0 20px 15px rgba(24, 201, 90, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(24, 201, 90, 0); }
+}
+
+/* Faixa de brilho (reflexo) */
+.btn-cta::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -60%;
+    width: 20%;
+    height: 200%;
+    background: rgba(255, 255, 255, 0.6);
+    transform: rotate(30deg);
+    transition: all 0.5s;
+    animation: mirror-shine 4s infinite;
+}
+
+@keyframes mirror-shine {
+    0% { left: -60%; }
+    15% { left: 120%; }
+    100% { left: 120%; }
+}
+.hero-image img {
+    width: 100%;
+    max-width: 400px;
+    display: block;
+    /* Adiciona o brilho dourado em volta da silhueta */
+    filter: drop-shadow(0 0 25px rgba(174, 144, 82, 0.4));
+    mask-image: linear-gradient(to top, transparent 0%, black 15%);
+    -webkit-mask-image: linear-gradient(to top, transparent 0%, black 15%);
+}
+/* --- CONTAINER DA IMAGEM E FUNDO --- */
+.hero-image-wrapper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    width: 100%;
+}
+
+/* A foto da Elisabeth fica na frente (z-index maior) */
+.hero-image-wrapper img.expert-img {
+    position: relative;
+    z-index: 10; 
+    width: 100%;
+    max-width: 450px;
+    filter: drop-shadow(0 0 25px rgba(174, 144, 82, 0.4));
+    mask-image: linear-gradient(to top, transparent 0%, black 15%);
+    -webkit-mask-image: linear-gradient(to top, transparent 0%, black 15%);
+}
+
+/* --- COMPROVANTES ESTÁTICOS ATRÁS DA FOTO --- */
+.pix-bg {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 220px;
+    z-index: 1; /* Fica atrás da imagem */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.pix-bg b { color: #fff; font-size: 0.8rem; display: block; }
+.pix-bg span { color: #00ff66; font-size: 0.7rem; font-weight: bold; }
+
+/* Posicionamento variado para "encher" o fundo */
+.p1 { top: 5%; left: -20px; transform: rotate(-5deg); }
+.p2 { top: 20%; right: -30px; transform: rotate(5deg); }
+.p3 { top: 40%; left: -50px; transform: rotate(-10deg); }
+.p4 { top: 60%; right: -40px; transform: rotate(8deg); }
+.p5 { top: 15%; left: 40%; transform: rotate(2deg); } /* Atrás da cabeça */
+.p6 { top: 50%; left: 10%; transform: rotate(-3deg); }
+
+/* Ajuste do botão CTA solicitado (Estilo Pierre Luiz) */
+.btn-cta {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 45px;
+    background: var(--btn-green);
+    color: #fff;
+    font-weight: 800;
+    text-decoration: none;
+    border-radius: 12px;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    border: 1px solid rgba(255,255,255,0.3);
+    box-shadow: 0 15px 30px rgba(11, 111, 42, 0.4);
+    transition: 0.3s;
+    overflow: hidden;
+}
+/* --- CONTAINER DO HERO --- */
+.hero-image-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    min-height: 500px;
+}
+
+/* --- MURAL MISTO (PIX + DEPOIMENTOS) --- */
+.proof-cloud {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 130%; /* Para vazar pelas laterais da foto */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    z-index: 1; /* Fica atrás da Elisabeth */
+    opacity: 0.9;
+}
+
+/* Base dos cards (Pix e Mensagens) */
+.proof-item {
+    background: rgba(15, 15, 15, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 10px 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+/* Estilo para Depoimentos (Balãozinho de Chat) */
+.testimonial-bubble {
+    border-left: 3px solid var(--primary-gold);
+}
+
+.proof-item b { 
+    color: #fff; 
+    font-size: 0.75rem; 
+    display: block; 
+    text-transform: none; 
+}
+
+.proof-item span { 
+    color: #00ff66; 
+    font-size: 0.7rem; 
+    font-weight: 800; 
+}
+
+.proof-item p {
+    color: #ddd;
+    font-size: 0.75rem;
+    margin: 0;
+    line-height: 1.2;
+}
+
+/* --- FOTO DA EXPERT --- */
+.expert-img {
+    position: relative;
+    z-index: 10; /* Sempre à frente de tudo */
+    max-width: 440px;
+    filter: drop-shadow(0 0 30px rgba(174, 144, 82, 0.3));
+    mask-image: linear-gradient(to top, transparent 0%, black 10%);
+    -webkit-mask-image: linear-gradient(to top, transparent 0%, black 10%);
+     /* ESSE É O SEGREDO: se quiser tire daqui para baixo */
+    -webkit-mask-image: linear-gradient(to top, transparent 5%, black 25%);
+    mask-image: linear-gradient(to top, transparent 5%, black 25%);
+    
+    /* Garante que a imagem não se mova */
+    display: block;
+    margin-bottom: 0; 
+}
+
+/* --- BOTÃO CTA REFINADO --- */
+.btn-cta {
+    position: relative;
+    padding: 22px 50px;
+    background: var(--btn-green);
+    color: #fff;
+    font-weight: 800;
+    text-decoration: none;
+    border-radius: 50px;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    box-shadow: 0 10px 40px rgba(24, 201, 90, 0.4);
+    transition: 0.3s;
+    overflow: hidden;
+    display: inline-block;
+}
+
+.btn-cta {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px; /* Espaço entre texto e ícone */
+    padding: 18px 45px;
+    background: var(--btn-green);
+    border-radius: 14px;
+    text-decoration: none;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 15px 35px rgba(11, 111, 42, 0.4);
+    overflow: hidden;
+}
+
+/* Container do Texto do Botão */
+.btn-text-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+}
+
+.btn-main-text {
+    font-family: 'Blinker', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: #fff;
+    line-height: 1;
+    letter-spacing: 1px;
+}
+
+.btn-sub-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 400;
+    margin-top: 4px;
+}
+
+/* Ícone Animado */
+.btn-icon-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.15);
+    padding: 10px;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+.btn-cta:hover .btn-icon-box {
+    transform: translateX(5px);
+    background: rgba(0, 0, 0, 0.3);
+}
+
+/* Efeito de Brilho que passa (Scanner) */
+.btn-cta::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(255, 255, 255, 0.4),
+        transparent
+    );
+    transition: all 0.6s;
+    animation: btn-shine 4s infinite;
+}
+
+@keyframes btn-shine {
+    0% { left: -100%; }
+    20% { left: 120%; }
+    100% { left: 120%; }
+}
+
+/* Efeito de Pulsação de Sombra */
+@keyframes btn-pulse {
+    0% { box-shadow: 0 0 0 0 rgba(24, 201, 90, 0.6); }
+    70% { box-shadow: 0 0 0 15px rgba(24, 201, 90, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(24, 201, 90, 0); }
+}
+
+.btn-cta {
+    animation: btn-pulse 2s infinite;
+}
+
+.btn-cta:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 20px 45px rgba(11, 111, 42, 0.6);
+}
+/* --- ESTILO REFINADO BLOCO 2 --- */
+.roots-badge {
+    display: inline-block;
+    padding: 6px 15px;
+    background: rgba(174, 144, 82, 0.1);
+    border: 1px solid var(--primary-gold);
+    color: var(--primary-gold);
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+}
+
+.proposta-direta h2 {
+    font-size: 2.5rem !important; /* Aumentando o impacto */
+    line-height: 1.1;
+    color: var(--text-dark);
+}
+
+.proposta-direta p {
+    font-size: 1.2rem;
+    color: #444;
+    margin-top: 15px;
+}
+
+/* Tratamento Premium para a Imagem */
+.img-container-premium {
+    position: relative;
+    padding: 10px;
+}
+
+.img-container-premium img {
+    width: 100%;
+    border-radius: 20px;
+    z-index: 2;
+    position: relative;
+}
+
+/* Moldura decorativa atrás da imagem */
+.img-container-premium::before {
+    content: '';
+    position: absolute;
+    top: 30px;
+    right: -10px;
+    width: 100%;
+    height: 100%;
+    border: 2px solid var(--primary-gold);
+    border-radius: 20px;
+    z-index: 1;
+}
+
+/* Ajuste de flex para mobile */
+@media (max-width: 768px) {
+    .proposta-direta h2 { font-size: 2rem !important; }
+    .img-container-premium { margin-top: 40px; }
+}
+/* --- BLOCO 2: DESIGN EDITORIAL PREMIUM --- */
+.proposta-direta {
+    padding: 140px 0;
+    background: #ffffff;
+    /* Fundo sutil com padrão de pontos (estilo Pierre Luiz) */
+    background-image: radial-gradient(#eee 1px, transparent 1px);
+    background-size: 30px 30px;
+    overflow: visible;
+}
+
+.proposta-wrapper {
+    display: flex;
+    align-items: center;
+    position: relative;
+    gap: 0; /* Vamos usar margens negativas para sobreposição */
+}
+
+/* Bloco de Texto flutuante */
+.text-box-float {
+    flex: 1.2;
+    background: #ffffff;
+    padding: 80px 60px;
+    border-radius: 40px;
+    box-shadow: 30px 30px 80px rgba(0,0,0,0.06);
+    z-index: 5;
+    position: relative;
+    border: 1px solid #f0f0f0;
+}
+
+.text-box-float h2 {
+    font-size: 3.5rem !important;
+    letter-spacing: -1px;
+    margin-bottom: 30px;
+}
+
+.vertical-gold-bar {
+    border-left: 4px solid;
+    border-image: var(--gold-gradient) 1;
+    padding-left: 25px;
+    margin-bottom: 40px;
+}
+
+.vertical-gold-bar p {
+    font-size: 1.3rem;
+    color: #444;
+    line-height: 1.7;
+}
+
+/* --- TRATAMENTO DA IMAGEM "EMERGENTE" --- */
+.image-focus-area {
+    flex: 0.8;
+    position: relative;
+    margin-left: -100px; /* Sobreposição elegante */
+    z-index: 1;
+}
+
+.img-bg-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 120%;
+    height: 120%;
+    background: radial-gradient(circle, rgba(174, 144, 82, 0.15) 0%, transparent 70%);
+    z-index: -1;
+}
+
+.expert-action-img {
+    width: 100%;
+    height: auto;
+    border-radius: 40px;
+    /* Máscara complexa para "sumir" nas bordas de forma orgânica */
+    -webkit-mask-image: linear-gradient(to right, transparent, black 20%, black 80%, transparent),
+                        linear-gradient(to bottom, transparent, black 20%, black 80%, transparent);
+    mask-image: linear-gradient(to right, transparent, black 20%, black 80%, transparent),
+                linear-gradient(to bottom, transparent, black 20%, black 80%, transparent);
+    -webkit-mask-composite: source-in;
+    mask-composite: intersect;
+    filter: contrast(1.05) brightness(1.05);
+}
+
+/* Etiqueta de dados flutuante sobre a imagem */
+.floating-label {
+    position: absolute;
+    top: 20%;
+    right: -20px;
+    background: var(--text-dark);
+    color: #fff;
+    padding: 15px 25px;
+    border-radius: 12px;
+    font-family: 'Blinker', sans-serif;
+    font-size: 0.9rem;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+    z-index: 10;
+    border: 1px solid var(--primary-gold);
+}
+
+.floating-label b { color: var(--primary-gold); display: block; font-size: 1.2rem; }
+
+/* Responsivo */
+@media (max-width: 1024px) {
+    .proposta-wrapper { flex-direction: column; }
+    .text-box-float { padding: 40px; margin-bottom: -50px; flex: none; width: 100%; }
+    .image-focus-area { margin-left: 0; width: 100%; flex: none; }
+    .text-box-float h2 { font-size: 2.8rem !important; }
+}
+/* --- BLOCO 3: PAINEL DE DIAGNÓSTICO --- */
+.perfil-section {
+    background: #f9f9f9;
+    padding: 120px 0;
+    position: relative;
+}
+
+.diagnostico-wrapper {
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: 60px;
+    align-items: center;
+}
+
+/* Imagem com Máscara Orgânica */
+.img-perfil-wrapper {
+    position: relative;
+}
+
+.img-perfil-wrapper img {
+    width: 100%;
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; /* Forma orgânica luxuosa */
+    box-shadow: 0 30px 60px rgba(0,0,0,0.1);
+    border: 8px solid #fff;
+    transition: 0.5s;
+}
+
+.img-perfil-wrapper:hover img {
+    border-radius: 40% 60% 60% 40% / 40% 40% 60% 60%;
+}
+
+/* Estilo dos Cards Sim e Não */
+.cards-perfil-grid {
+    display: grid;
+    gap: 30px;
+}
+
+.card-perfil {
+    background: #fff;
+    padding: 40px;
+    border-radius: 25px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.03);
+    border: 1px solid #eee;
+    position: relative;
+}
+
+.card-perfil.negativo {
+    background: rgba(255, 255, 255, 0.5);
+    border: 1px dashed #ffcccc;
+}
+
+.card-perfil h3 {
+    font-size: 1.8rem;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Marcadores de lista customizados */
+.list-roots {
+    list-style: none;
+}
+
+.list-roots li {
+    padding: 12px 0;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 1.05rem;
+    color: #444;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.list-roots li:last-child { border: none; }
+
+.dot-status {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.dot-yes { background: #18c95a; box-shadow: 0 0 10px #18c95a; }
+.dot-no { background: #ff4d4d; }
+
+/* Badge de "Check" no card */
+.status-badge {
+    position: absolute;
+    top: -15px;
+    right: 20px;
+    padding: 8px 20px;
+    border-radius: 50px;
+    font-size: 0.7rem;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+/* Responsividade */
+@media (max-width: 992px) {
+    .diagnostico-wrapper { grid-template-columns: 1fr; }
+    .img-perfil-wrapper { max-width: 300px; margin: 0 auto; }
+}
+/* --- BLOCO 4: GRID DE MAESTRIA --- */
+.learning-section {
+    padding: 120px 0;
+    background-color: #ffffff;
+}
+
+.learning-grid-layout {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 50px;
+    align-items: start;
+}
+
+.learning-cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+}
+
+.learning-card {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 20px;
+    border: 1px solid #f0f0f0;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.learning-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary-gold);
+    box-shadow: 0 20px 40px rgba(174, 144, 82, 0.1);
+}
+
+/* Números estilizados em cada card */
+.card-number {
+    font-family: 'Blinker', sans-serif;
+    font-size: 3rem;
+    font-weight: 800;
+    color: rgba(174, 144, 82, 0.1); /* Número grande e transparente ao fundo */
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    line-height: 1;
+}
+
+.learning-card h4 {
+    font-size: 1.1rem;
+    color: var(--text-dark);
+    margin-bottom: 10px;
+    position: relative;
+    z-index: 2;
+}
+
+.learning-card p {
+    font-size: 0.9rem;
+    color: var(--text-light);
+    position: relative;
+    z-index: 2;
+}
+
+/* Imagem com profundidade */
+.img-sticky-box {
+    position: sticky;
+    top: 100px;
+}
+
+.img-sticky-box img {
+    width: 100%;
+    border-radius: 25px;
+    filter: grayscale(0.2) contrast(1.1);
+    box-shadow: 20px 20px 0px var(--primary-gold); /* Moldura sólida deslocada */
+}
+
+/* Responsividade */
+@media (max-width: 992px) {
+    .learning-grid-layout { grid-template-columns: 1fr; }
+    .img-sticky-box { position: static; margin-top: 40px; max-width: 400px; margin-left: auto; margin-right: auto; }
+}
+/* --- BLOCO 5: PAINEL DA TRANSFORMAÇÃO --- */
+.metodologia-section {
+    padding: 120px 0;
+    background-color: var(--bg-gray);
+    position: relative;
+}
+
+.transformation-card {
+    background: #ffffff;
+    border-radius: 40px;
+    padding: 80px 60px;
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 60px;
+    align-items: center;
+    box-shadow: 0 30px 70px rgba(0,0,0,0.05);
+    border: 1px solid rgba(174, 144, 82, 0.2);
+}
+
+/* Tratamento da imagem com Selo de Autenticidade */
+.img-insight-wrapper {
+    position: relative;
+}
+
+.img-insight-wrapper img {
+    width: 100%;
+    border-radius: 30px;
+    filter: brightness(0.9) contrast(1.1);
+}
+
+.roots-seal {
+    position: absolute;
+    top: -25px;
+    right: -25px;
+    width: 100px;
+    height: 100px;
+    background: var(--gold-gradient);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-family: 'Blinker', sans-serif;
+    font-weight: 800;
+    font-size: 0.8rem;
+    text-align: center;
+    line-height: 1.1;
+    transform: rotate(15deg);
+    box-shadow: 0 10px 20px rgba(174, 144, 82, 0.4);
+    border: 2px solid #fff;
+}
+
+/* Bloco de citação (O "Pensar Diferente") */
+.quote-box {
+    position: relative;
+    margin-bottom: 40px;
+}
+
+.quote-box h3 {
+    font-size: 2.2rem;
+    color: var(--text-dark);
+    line-height: 1.2;
+    margin-bottom: 15px;
+}
+
+.quote-box::before {
+    content: '"';
+    position: absolute;
+    top: -40px;
+    left: -20px;
+    font-size: 8rem;
+    color: var(--primary-gold);
+    opacity: 0.2;
+    font-family: serif;
+}
+
+/* Ícones de Resultado */
+.result-list {
+    display: grid;
+    gap: 20px;
+}
+
+.result-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.icon-circle-gold {
+    width: 50px;
+    height: 50px;
+    background: #fff;
+    border: 2px solid var(--primary-gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 5px 15px rgba(174, 144, 82, 0.2);
+    flex-shrink: 0;
+}
+
+.result-item span {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #444;
+}
+
+/* Responsividade */
+@media (max-width: 992px) {
+    .transformation-card { grid-template-columns: 1fr; padding: 40px 20px; }
+    .img-insight-wrapper { max-width: 300px; margin: 0 auto 40px; }
+    .quote-box h3 { font-size: 1.8rem; }
+}
+/* --- BLOCO 6: MOSAICO DE AUTORIDADE --- */
+.expert-section {
+    padding: 140px 0;
+    background: #ffffff;
+    overflow: visible;
+}
+
+/* Container do Mosaico (Lado Esquerdo) */
+.expert-mosaic-container {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+    width: 100%;
+    height: 550px; /* Altura fixa para controlar o espalhamento */
+    position: relative;
+}
+
+.mosaic-item {
+    position: absolute;
+    background: #fff;
+    padding: 8px;
+    box-shadow: 0 15px 45px rgba(0,0,0,0.1);
+    border-radius: 4px;
+    transition: all 0.4s ease;
+}
+
+.mosaic-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 2px;
+}
+
+/* Posicionamento Individual (Para não tampar nada) */
+.m-1 { /* Foto Principal */
+    width: 260px;
+    height: 340px;
+    top: 10%;
+    left: 10%;
+    z-index: 5;
+}
+
+.m-2 { /* Foto Secundária 1 */
+    width: 180px;
+    height: 220px;
+    top: 0;
+    right: 5%;
+    z-index: 4;
+}
+
+.m-3 { /* Foto Secundária 2 */
+    width: 200px;
+    height: 200px;
+    bottom: 5%;
+    right: 15%;
+    z-index: 3;
+}
+
+.m-4 { /* Foto Nova (-4) */
+    width: 190px;
+    height: 250px;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+}
+
+/* Efeito de flutuação suave e interativa */
+.mosaic-item:hover {
+    transform: scale(1.05) translateY(-10px);
+    z-index: 10;
+    box-shadow: 0 30px 60px rgba(174, 144, 82, 0.3);
+}
+
+/* Coluna de Texto */
+.expert-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.expert-content h2 {
+    font-size: 3.5rem !important;
+    line-height: 1;
+    margin-bottom: 30px;
+}
+
+.expert-tagline {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--primary-gold);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+    display: block;
+}
+
+.expert-content p {
+    font-size: 1.15rem;
+    color: #333;
+    margin-bottom: 20px;
+    max-width: 550px;
+}
+
+/* Assinatura */
+.expert-signature {
+    font-family: 'Dancing Script', cursive;
+    font-size: 3rem;
+    background: var(--gold-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-top: 20px;
+}
+
+/* Ajustes Mobile */
+@media (max-width: 992px) {
+    .expert-mosaic-container {
+        height: 450px;
+        margin-bottom: 50px;
+    }
+    .m-1 { width: 180px; height: 240px; }
+    .m-2 { width: 130px; height: 160px; }
+    .m-3 { width: 140px; height: 140px; }
+    .m-4 { width: 130px; height: 170px; }
+}
+/* --- BLOCO 6: EXPERT ESTILO POST-IT (POLAROID) --- */
+.expert-section {
+    padding: 100px 0;
+    background: #fdfdfd; /* Branco levemente quente */
+    overflow: hidden;
+}
+
+.expert-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: center;
+}
+
+/* Container das fotos */
+.postit-gallery {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 20px;
+    position: relative;
+}
+
+/* O efeito Post-it / Polaroid */
+.postit-item {
+    background: #ffffff;
+    padding: 12px 12px 35px 12px; /* Base maior para parecer foto real */
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    border: 1px solid #ececec;
+    transition: all 0.4s ease;
+    display: inline-block;
+}
+
+.postit-item img {
+    width: 100%;
+    height: 200px; /* Altura controlada para não crescer demais */
+    object-fit: cover;
+    display: block;
+    /* Removido qualquer filtro para manter a qualidade original */
+}
+
+/* Rotações sutis para parecer que foram jogadas na mesa */
+.pi-1 { transform: rotate(-3deg); }
+.pi-2 { transform: rotate(2deg); }
+.pi-3 { transform: rotate(-2deg); }
+.pi-4 { transform: rotate(4deg); }
+
+/* Efeito ao passar o mouse: a foto "endireita" e sobe */
+.postit-item:hover {
+    transform: rotate(0deg) scale(1.05) translateY(-10px);
+    z-index: 10;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    border-color: var(--primary-gold);
+}
+
+/* Estilo do Texto */
+.expert-bio h2 {
+    font-size: 3rem !important;
+    color: var(--text-dark);
+    margin-bottom: 20px;
+}
+
+.expert-bio p {
+    font-size: 1.1rem;
+    color: #444;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.signature-roots {
+    font-family: 'Dancing Script', cursive;
+    font-size: 3rem;
+    color: var(--primary-gold);
+    margin-top: 20px;
+}
+
+/* Mobile */
+@media (max-width: 900px) {
+    .expert-layout { grid-template-columns: 1fr; }
+    .postit-gallery { gap: 10px; }
+    .postit-item { padding: 8px 8px 25px 8px; }
+    .postit-item img { height: 150px; }
+}
+/* --- BLOCO 7: VITRINE DE OFERTA IRRESISTÍVEL --- */
+.offer-section {
+    padding: 120px 0;
+    background-color: var(--bg-gray);
+}
+
+.offer-wrapper {
+    background: #ffffff;
+    border-radius: 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    overflow: hidden;
+    box-shadow: 0 40px 100px rgba(0,0,0,0.08);
+    border: 1px solid #eee;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* Lado da Imagem */
+.offer-visual {
+    position: relative;
+    background: #000; /* Fundo escuro para a foto brilhar */
+    overflow: hidden;
+}
+
+.offer-visual img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.8;
+    transition: 0.5s;
+}
+
+.offer-wrapper:hover .offer-visual img {
+    transform: scale(1.05);
+    opacity: 1;
+}
+
+.offer-badge-float {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: var(--gold-gradient);
+    color: #000;
+    padding: 8px 20px;
+    border-radius: 50px;
+    font-weight: 800;
+    font-size: 0.75rem;
+    z-index: 5;
+    text-transform: uppercase;
+}
+
+/* Lado do Conteúdo e Preço */
+.offer-details {
+    padding: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.offer-details h3 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: var(--text-dark);
+}
+
+.price-container {
+    margin: 30px 0;
+    padding: 20px 0;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+}
+
+.old-price {
+    font-size: 1rem;
+    color: #999;
+    text-decoration: line-through;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.new-price {
+    font-size: 4rem;
+    line-height: 1;
+    margin-bottom: 10px;
+}
+
+.payment-methods {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+    opacity: 0.6;
+    justify-content: center;
+}
+
+/* Responsivo */
+@media (max-width: 992px) {
+    .offer-wrapper { grid-template-columns: 1fr; border-radius: 20px; }
+    .offer-visual { height: 250px; }
+    .offer-details { padding: 40px 20px; text-align: center; }
+}
+/* --- BLOCO ESCASSEZ: ALERTA DE STATUS --- */
+.scarcity-premium {
+    background: #000;
+    padding: 30px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.scarcity-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    color: #fff;
+}
+
+.live-dot {
+    width: 12px;
+    height: 12px;
+    background: #ff4d4d;
+    border-radius: 50%;
+    box-shadow: 0 0 15px #ff4d4d;
+    animation: pulse-red 1.5s infinite;
+}
+
+@keyframes pulse-red {
+    0% { transform: scale(0.9); opacity: 0.7; }
+    50% { transform: scale(1.2); opacity: 1; }
+    100% { transform: scale(0.9); opacity: 0.7; }
+}
+
+.scarcity-text {
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.scarcity-text span { color: #ff4d4d; text-transform: uppercase; }
+
+/* --- BLOCO FECHAMENTO: REFLEXÃO FINAL --- */
+.closing-section {
+    padding: 120px 0;
+    text-align: center;
+    background: #ffffff;
+    position: relative;
+}
+
+/* Divisor elegante estilo Pierre Luiz */
+.closing-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 4px;
+    background: var(--gold-gradient);
+    border-radius: 10px;
+}
+
+.closing-section h2 {
+    font-size: 3rem !important;
+    margin-bottom: 30px;
+    color: var(--text-dark);
+}
+
+.closing-section p {
+    font-size: 1.3rem;
+    color: #555;
+    max-width: 850px;
+    margin: 0 auto 50px;
+    line-height: 1.8;
+}
+
+/* --- FOOTER PROFISSIONAL --- */
+.main-footer {
+    background: #0a0a0a;
+    padding: 80px 0 40px;
+    color: #888;
+    border-top: 1px solid #1a1a1a;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: start;
+    margin-bottom: 50px;
+}
+
+.footer-info h4 { color: #fff; margin-bottom: 15px; }
+.footer-info p { font-size: 0.9rem; line-height: 1.6; }
+
+.footer-bottom {
+    padding-top: 30px;
+    border-top: 1px solid #1a1a1a;
+    text-align: center;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+}
+
+@media (max-width: 768px) {
+    .closing-section h2 { font-size: 2.2rem !important; }
+    .closing-section p { font-size: 1.1rem; }
+    .footer-grid { grid-template-columns: 1fr; text-align: center; }
+}
+/* --- BLOCO 2: PROPOSTA DIRETA COM BACKGROUND --- */
+.proposta-direta {
+    padding: 140px 0;
+    position: relative;
+    /* O linear-gradient abaixo cria a transparência. 
+       0.85 significa 85% de branco, deixando a imagem 15% visível. 
+       Ajuste esse número se quiser a imagem mais forte ou mais fraca. */
+    background: linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)), 
+                url('background-fisio-2.png');
+    
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Cria um efeito de profundidade ao rolar a página */
+    overflow: visible;
+}
+/* --- BLOCO 3: PERFIL SECTION COM BACKGROUND --- */
+.perfil-section {
+    padding: 120px 0;
+    position: relative;
+    /* Overlay cinza claro para manter a alternância de seções e garantir leitura */
+    background: linear-gradient(rgba(249, 249, 249, 0.92), rgba(249, 249, 249, 0.92)), 
+                url('background-fisio-3.png'); /* Nome sugerido, troque pelo seu arquivo */
+    
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Efeito Parallax igual à seção anterior */
+    overflow: visible;
+}
+
+/* Estilo da Seção 6 */
+.expert-section {
+    position: relative; /* Necessário para posicionar o rasgo */
+    background-color: #ffffff; /* Cor de fundo da seção (ajuste se necessário) */
+    padding-top: 120px; /* Espaço para o rasgo não cobrir o texto */
+    z-index: 1;
+}
+
+/* O Efeito do Papel Rasgado */
+.expert-section::before {
+    content: "";
+    position: absolute;
+    top: -80px; /* Ajuste essa altura para subir ou descer o rasgo */
+    left: 0;
+    width: 100%;
+    height: 100px; /* Altura da imagem do rasgo */
+    background-image: url('bg-serrilhado-papel-cortado-transparente.png');
+    background-size: 100% 100%; /* Faz a imagem esticar em toda a largura */
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    z-index: 10;
+    pointer-events: none; /* Garante que o rasgo não atrapalhe cliques em botões */
+}
+
+/* Ajuste para Mobile */
+@media (max-width: 768px) {
+    .expert-section::before {
+        height: 50px; /* Rasgo menor no celular */
+        top: -40px;
+    }
+    .expert-section {
+        padding-top: 80px;
+    }
+}
+
+.metodologia-section {
+    background-image: url('bg-fisio-2.png'); 
+    background-size: cover; /* Faz a imagem cobrir toda a seção */
+    background-position: center;
+    background-attachment: fixed; /* Opcional: efeito Parallax (a imagem trava ao rolar) */
+    position: relative;
+    padding: 100px 0;
+}
+
+/* Adicione um filtro escuro se a imagem for muito clara e atrapalhar o texto */
+.metodologia-section::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.7); /* Escurece a imagem em 70% */
+    z-index: 1;
+}
+
+/* Garante que o conteúdo fique acima do filtro escuro */
+.metodologia-section .container {
+    position: relative;
+    z-index: 2;
+}
+/* --- BLOCO 4: LEARNING SECTION --- */
+.learning-section {
+    padding: 120px 0;
+    background-color: #0a0a0a; /* Fundo escuro para destacar o dourado */
+    color: #fff;
+}
+
+.learning-section .section-title {
+    font-size: 3.5rem; /* Título bem grande */
+    font-weight: 800;
+    text-align: left;
+    margin-bottom: 60px;
+    line-height: 1.1;
+    text-transform: uppercase;
+}
+
+/* Layout do Grid */
+.learning-grid-layout {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr; /* Cards maiores que a imagem */
+    gap: 40px;
+    align-items: start;
+}
+
+/* Container dos Cards */
+.learning-cards-container {
+    display: grid;
+    grid-template-columns: 1fr; /* Um card por linha para leitura clara */
+    gap: 25px;
+}
+
+/* O CARD INDIVIDUAL */
+.learning-card {
+    position: relative;
+    background: linear-gradient(145deg, #1a1a1a 0%, #111111 100%);
+    padding: 40px 40px 40px 100px; /* Espaço para o número */
+    border-radius: 20px;
+    border: 1px solid rgba(174, 144, 82, 0.2); /* Borda dourada sutil */
+    transition: all 0.4s ease;
+    overflow: hidden;
+}
+
+.learning-card:hover {
+    transform: translateX(15px); /* Desloca para o lado no hover */
+    border-color: #ae9052;
+    box-shadow: 0 10px 30px rgba(174, 144, 82, 0.1);
+}
+
+/* O NÚMERO GIGANTE ATRÁS */
+.card-number {
+    position: absolute;
+    left: -10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 7rem; /* Tamanho massivo */
+    font-weight: 800;
+    font-family: 'Inter', sans-serif;
+    color: #ae9052;
+    opacity: 0.15; /* Bem clarinho para dar profundidade */
+    line-height: 1;
+}
+
+/* TÍTULO DO CARD */
+.learning-card h4 {
+    font-family: 'Blinker', sans-serif;
+    font-size: 2rem; /* Letra grande */
+    color: #ae9052;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* TEXTO DO CARD */
+.learning-card p {
+    font-size: 1.25rem; /* Texto de leitura fácil */
+    line-height: 1.5;
+    color: #cccccc;
+    max-width: 90%;
+}
+
+/* IMAGEM STICKY */
+.img-sticky-box img {
+    width: 100%;
+    border-radius: 30px;
+    border: 2px solid #ae9052;
+    box-shadow: 0 0 50px rgba(174, 144, 82, 0.2);
+    position: sticky;
+    top: 100px;
+}
+
+/* Ajustes Mobile */
+@media (max-width: 992px) {
+    .learning-grid-layout {
+        grid-template-columns: 1fr;
+    }
+    
+    .learning-section .section-title {
+        font-size: 2.5rem;
+        text-align: center;
+    }
+    
+    .learning-card {
+        padding: 40px 30px 30px 30px;
+        text-align: center;
+    }
+    
+    .card-number {
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 5rem;
+        width: 100%;
+    }
+
+    .learning-card p {
+        max-width: 100%;
+        margin: 0 auto;
+    }
+}
+@media (max-width: 768px) {
+    .learning-section .section-title {
+        font-size: 2.2rem;
+        color: #ffffff;
+        text-align: center;
+    }
+}
+/* --- BLOCO 4: LEARNING SECTION (VERSÃO CLEAN) --- */
+.learning-section {
+    padding: 120px 0;
+    background-color: #fdfdfd; /* Fundo claro (off-white) */
+    color: #1a1a1a;
+}
+
+/* Título: "O que você vai" fica escuro e o resto dourado */
+.learning-section .section-title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    text-align: left;
+    margin-bottom: 60px;
+    line-height: 1.1;
+    text-transform: uppercase;
+    color: #111111; /* Cor escura para contrastar no fundo claro */
+}
+
+/* Layout do Grid */
+.learning-grid-layout {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 40px;
+    align-items: start;
+}
+
+/* O CARD INDIVIDUAL (VERSÃO CLARA) */
+.learning-card {
+    position: relative;
+    background: #ffffff; /* Card branco puro */
+    padding: 40px 40px 40px 100px;
+    border-radius: 20px;
+    /* Sombra suave para dar profundidade */
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05); 
+    border: 1px solid rgba(174, 144, 82, 0.1);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    margin-bottom: 20px;
+}
+
+.learning-card:hover {
+    transform: translateY(-10px); /* Flutua para cima */
+    box-shadow: 0 20px 50px rgba(174, 144, 82, 0.15);
+    border-color: #ae9052;
+}
+
+/* NÚMEROS GIGANTES NO FUNDO CLARO */
+.card-number {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 6rem;
+    font-weight: 900;
+    color: #ae9052;
+    opacity: 0.12; /* Bem sutil no fundo branco */
+    font-family: 'Inter', sans-serif;
+}
+
+/* TÍTULO DO CARD */
+.learning-card h4 {
+    font-family: 'Blinker', sans-serif;
+    font-size: 1.8rem;
+    color: #ae9052; /* Dourado */
+    margin-bottom: 8px;
+    font-weight: 700;
+}
+
+/* TEXTO DO CARD */
+.learning-card p {
+    font-size: 1.2rem;
+    line-height: 1.5;
+    color: #444444; /* Cinza escuro para leitura */
+}
+
+/* IMAGEM LADO DIREITO */
+.img-sticky-box img {
+    width: 100%;
+    border-radius: 40px;
+    /* Borda dourada grossa para destacar no fundo claro */
+    border: 8px solid #ffffff; 
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+    position: sticky;
+    top: 50px;
+}
+
+/* Ajustes Mobile */
+@media (max-width: 992px) {
+    .learning-section .section-title {
+        font-size: 2.5rem;
+        text-align: center;
+    }
+    .learning-grid-layout {
+        grid-template-columns: 1fr;
+    }
+    .img-sticky-box {
+        order: -1; /* Imagem aparece antes dos cards no celular */
+        margin-bottom: 40px;
+    }
+}
+
+/* Container da imagem */
+.img-insight-wrapper {
+    position: relative;
+    display: inline-block;
+    padding: 12px; /* Espessura da borda externa */
+    background: linear-gradient(145deg, #ae9052, #d9c5a1, #b4975c); /* Gradiente Dourado */
+    border-radius: 30px; /* Arredondamento elegante */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2); /* Sombra para dar profundidade */
+}
+
+/* A Imagem em si */
+.img-insight-wrapper img {
+    display: block;
+    border-radius: 20px; /* Um pouco menor que o container para encaixar */
+    border: 4px solid #ffffff; /* Linha branca interna para dar contraste (efeito moldura) */
+    transition: transform 0.5s ease;
+}
+
+/* Selo "Método Validado" posicionado sobre a nova borda */
+.roots-seal {
+    z-index: 10;
+    /* Certifique-se que o selo tenha position absolute no seu código original */
+}
+
+/* Efeito de brilho ao passar o mouse */
+.img-insight-wrapper:hover {
+    box-shadow: 0 25px 50px rgba(174, 144, 82, 0.3);
+    transform: scale(1.02);
+    transition: all 0.5s ease;
+}
+.roots-seal {
+    background: var(--gold-gradient);
+    color: #000;
+    font-weight: 800;
+    padding: 15px;
+    border-radius: 50%;
+    border: 3px solid #ffffff; /* Borda branca no selo para "destacar" da borda dourada da foto */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    text-align: center;
+    line-height: 1.1;
+    font-family: 'Inter', sans-serif;
+}
+/* Container da imagem no Bloco 4 */
+.img-sticky-box {
+    position: sticky;
+    top: 100px;
+    padding: 15px; /* Largura da borda dourada */
+    background: linear-gradient(135deg, #ae9052 0%, #d9c5a1 50%, #b4975c 100%);
+    border-radius: 40px; /* Arredondamento da borda externa */
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15); /* Sombra suave */
+    transition: all 0.4s ease;
+}
+
+/* A Imagem dentro da moldura */
+.img-sticky-box img {
+    width: 100%;
+    display: block;
+    border-radius: 30px; /* Arredondamento interno */
+    border: 5px solid #ffffff; /* Fio branco de separação que dá o toque premium */
+}
+
+/* Efeito ao passar o mouse */
+.img-sticky-box:hover {
+    transform: translateY(-5px) rotate(1deg); /* Leve inclinação para parecer real */
+    box-shadow: 0 35px 70px rgba(174, 144, 82, 0.3);
+}
+.closing-section {
+    padding: 120px 0;
+    text-align: center;
+    position: relative;
+    /* Textura de papel sutil */
+    background-color: #f9f9f9;
+    background-image: url("https://www.transparenttextures.com/patterns/p6.png"); 
+    /* Essa URL é uma textura de fibra de papel gratuita e leve */
+    border-top: 1px solid #eee;
+}
+
+.closing-section h2 {
+    font-size: 3rem;
+    margin-bottom: 25px;
+    color: #111;
+}
+
+.closing-section p {
+    font-size: 1.3rem;
+    max-width: 800px;
+    margin: 0 auto 40px;
+    color: #444;
+    line-height: 1.6;
+}
+/* --- AJUSTES GLOBAIS PARA EVITAR ROLAGEM LATERAL --- */
+html, body {
+    overflow-x: hidden;
+    width: 100%;
+    position: relative;
+}
+
+/* --- CORREÇÃO BLOCO 1: HERO MOBILE --- */
+@media (max-width: 768px) {
+    .hero {
+        padding: 60px 0;
+        text-align: center;
+    }
+
+    .hero-grid {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 40px;
+    }
+
+    .hero-text h1 {
+        font-size: 2.2rem;
+        margin: 20px 0;
+    }
+
+    /* Ajuste da Nuvem de Prova Social para não vazar da tela */
+    .proof-cloud {
+        width: 100% !important; /* Força caber na tela */
+        left: 0 !important;
+        transform: none !important;
+        position: relative; /* Muda de absolute para relative para empurrar a foto para baixo */
+        margin-bottom: -150px; /* Faz a foto sobrepor um pouco os balões */
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+    }
+
+    .proof-item {
+        padding: 6px 10px;
+        font-size: 0.7rem;
+    }
+
+    .expert-img {
+        max-width: 320px !important;
+        margin: 0 auto;
+    }
+}
+
+/* --- CORREÇÃO BLOCO 4: O QUE VOCÊ VAI DOMINAR (LETRAS POR CIMA DA IMAGEM) --- */
+@media (max-width: 992px) {
+    .learning-section {
+        padding: 60px 0;
+    }
+
+    .learning-section .section-title {
+        font-size: 2.2rem;
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    .learning-grid-layout {
+        display: flex;
+        flex-direction: column; /* Transforma o grid em uma coluna simples */
+        gap: 30px;
+    }
+
+    /* DESATIVA O STICKY NO MOBILE */
+    .img-sticky-box {
+        position: relative !important; /* Remove o efeito colante */
+        top: 0 !important; /* Reseta a posição */
+        order: -1; /* Coloca a imagem ANTES dos cards para dar contexto */
+        max-width: 350px;
+        margin: 0 auto 30px;
+    }
+
+    .learning-card {
+        padding: 50px 20px 30px 20px !important;
+        text-align: center;
+    }
+
+    /* Diminuir os números gigantes para não poluir o celular */
+    .card-number {
+        font-size: 4rem !important; 
+        top: 10px !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        width: 100%;
+    }
+
+    .learning-card h4 {
+        font-size: 1.6rem;
+    }
+    
+    .learning-card p {
+        font-size: 1.1rem;
+        margin: 0 auto;
+    }
+}
+
+/* --- AJUSTE BLOCO 6: POST-ITS NO MOBILE --- */
+@media (max-width: 768px) {
+    .expert-layout {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .postit-gallery {
+        grid-template-columns: 1fr 1fr;
+        max-width: 100%;
+    }
+
+    .postit-item img {
+        height: 140px; /* Fotos menores para não cansar o scroll */
+    }
+
+    .expert-bio {
+        text-align: center;
+    }
+}
+
+/* --- AJUSTE BLOCO 7: OFERTA NO MOBILE --- */
+@media (max-width: 768px) {
+    .offer-wrapper {
+        grid-template-columns: 1fr;
+    }
+    
+    .new-price {
+        font-size: 3rem;
+    }
+}
+@media (max-width: 768px) {
+    /* --- AJUSTE GERAL DE SEGURANÇA --- */
+    html, body {
+        overflow-x: hidden; /* Proíbe a rolagem lateral */
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* --- HERO CONTAINER --- */
+    .hero {
+        min-height: auto !important; /* Deixa o conteúdo ditar a altura */
+        padding: 40px 0 0 0 !important; /* Tira o excesso de padding */
+        display: block;
+    }
+
+    .hero .container {
+        padding-left: 15px;
+        padding-right: 15px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .hero-grid {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        width: 100%;
+        gap: 20px;
+    }
+
+    .hero-text {
+        width: 100%;
+    }
+
+    .hero-text h1 {
+        font-size: 2rem !important; /* Evita que o texto grande empurre a tela */
+        line-height: 1.2;
+    }
+
+    /* --- IMAGEM DA EXPERT --- */
+    .hero-image-container {
+        width: 100%;
+        min-height: auto;
+        margin-top: 30px;
+        display: flex;
+        flex-direction: column; /* No mobile, os PIX ficam antes ou depois da foto */
+        align-items: center;
+        overflow: visible; /* Garante que as sombras e brilhos apareçam */
+    }
+
+    .expert-img {
+        width: 100% !important;
+        max-width: 300px !important; /* Tamanho seguro para iPhones menores */
+        height: auto;
+        margin: 0 auto;
+        /* REMOVENDO OU REDUZINDO O CORTE EMBAIXO */
+        -webkit-mask-image: none !important; 
+        mask-image: none !important;
+        filter: drop-shadow(0 0 15px rgba(174, 144, 82, 0.3));
+    }
+
+    /* --- NUVEM DE PROVAS (AJUSTE PARA NÃO CORTAR) --- */
+    .proof-cloud {
+        position: relative !important; /* Muda de flutuante para estático no fluxo */
+        top: 0 !important;
+        left: 0 !important;
+        transform: none !important;
+        width: 100% !important;
+        max-width: 100%;
+        display: flex;
+        flex-wrap: wrap; /* Faz os itens quebrarem linha se necessário */
+        justify-content: center;
+        gap: 8px;
+        margin-bottom: -40px; /* Faz um charminho de leve em cima da foto */
+        padding: 10px;
+        box-sizing: border-box;
+    }
+
+    .proof-item {
+        flex: 0 1 auto; /* Permite que o item ajuste seu tamanho */
+        font-size: 0.65rem;
+        padding: 6px 10px;
+        white-space: nowrap; /* Evita que o texto dentro do balão quebre */
+    }
+}
+/* --- AJUSTE EXCLUSIVO PARA CELULAR (HERO) --- */
+@media (max-width: 768px) {
+    /* 1. Faz o grid virar uma coluna */
+    .hero-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        text-align: center;
+    }
+
+    /* 2. Coloca a Imagem no topo (Ordem 1) */
+    .hero-image-container {
+        order: 1 !important;
+        margin-bottom: 30px; /* Espaço entre a foto e o texto */
+        min-height: auto !important;
+    }
+
+    /* 3. Coloca o Bloco de Texto abaixo da imagem (Ordem 2) */
+    .hero-text {
+        order: 2 !important;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* 4. Ajuste dos elementos internos do texto para garantir a ordem */
+    .hero-text h3 { order: 1; }
+    .hero-text h1 { order: 2; font-size: 2.2rem !important; }
+    .hero-text p { order: 3; }
+    .hero-text .hero-info { order: 4; margin-top: 20px; }
+    
+    /* 5. Garante que o Botão seja o último item (Ordem 5) */
+    .hero-text .btn-cta {
+        order: 5 !important;
+        margin-top: 30px;
+        width: 100%; /* Botão largo no celular fica melhor */
+        max-width: 320px;
+    }
+
+    /* Ajuste da "Nuvem de Pix" para não ficar por cima do texto no mobile */
+    .proof-cloud {
+        position: relative !important; /* Deixa de ser flutuante no mobile */
+        top: 0 !important;
+        left: 0 !important;
+        transform: none !important;
+        width: 100% !important;
+        margin-bottom: -100px; /* Faz a foto subir um pouco sobre os balões */
+        z-index: 1;
+    }
+    
+    .expert-img {
+        z-index: 2;
+        max-width: 280px !important;
+    }
+}
+/* --- AJUSTE REFINADO PARA CELULAR (ESTILO OVERLAP) --- */
+@media (max-width: 768px) {
+    /* 1. Organiza o container pai */
+    .hero {
+        padding-top: 20px !important; /* Diminui o topo para a foto subir */
+        display: block;
+    }
+
+    .hero-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center;
+    }
+
+    /* 2. A FOTO (No topo com fade para o preto) */
+    .hero-image-container {
+        order: 1 !important;
+        width: 100%;
+        margin-bottom: 0; /* Remove espaço para o texto encostar */
+        display: flex;
+        justify-content: center;
+        position: relative;
+    }
+
+    .expert-img {
+        width: 90% !important;
+        max-width: 280px !important;
+        height: auto;
+        /* Efeito de sumir no preto na parte de baixo */
+        -webkit-mask-image: linear-gradient(to bottom, black 65%, transparent 95%) !important;
+        mask-image: linear-gradient(to bottom, black 65%, transparent 95%) !important;
+        filter: drop-shadow(0 0 15px rgba(174, 144, 82, 0.2));
+    }
+
+    /* 3. O TEXTO (Subindo para cima da foto) */
+    .hero-text {
+        order: 2 !important;
+        margin-top: -70px; /* PUXA O TEXTO PARA CIMA DA IMAGEM */
+        z-index: 10; /* Garante que o texto fique na frente da foto */
+        position: relative;
+        padding: 0 10px;
+    }
+
+    .hero-text h1 {
+        font-size: 1.8rem !important; /* Texto levemente menor para não quebrar */
+        line-height: 1.1;
+        text-shadow: 2px 2px 10px rgba(0,0,0,0.8); /* Sombra para ler bem em cima da foto */
+    }
+    
+    .hero-text h3 {
+        font-size: 0.9rem !important;
+        background: rgba(0,0,0,0.5); /* Fundo sutil para o subtítulo */
+        display: inline-block;
+        padding: 2px 10px;
+        border-radius: 4px;
+    }
+
+    /* 4. O BOTÃO (Menor e mais elegante) */
+    .hero-text .btn-cta {
+        order: 3 !important;
+        margin-top: 25px !important;
+        padding: 14px 28px !important; /* Botão reduzido */
+        width: auto !important; /* Não ocupa a largura toda */
+        min-width: 260px;
+    }
+
+    .btn-main-text {
+        font-size: 1.1rem !important; /* Texto principal do botão menor */
+    }
+
+    .btn-sub-text {
+        font-size: 0.7rem !important; /* Texto secundário do botão menor */
+    }
+
+    .btn-icon-box {
+        padding: 6px !important; /* Ícone menor */
+    }
+
+    /* 5. Prova Social (Atrás da foto ou sumida no mobile para limpar o visual) */
+    .proof-cloud {
+        opacity: 0.5;
+        transform: scale(0.8) translateY(20px) !important;
+        margin-bottom: -120px !important;
+    }
+}

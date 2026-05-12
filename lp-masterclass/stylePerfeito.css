@@ -1,0 +1,146 @@
+        :root {
+            --primary-gold: #ae9052;
+            --gold-gradient: linear-gradient(90deg, #ae9052 0%, #d9c5a1 50%, #b4975c 100%);
+            --btn-green: linear-gradient(90deg, #0b6f2a 0%, #18c95a 50%, #0b6f2a 100%);
+            --bg-white: #ffffff;
+            --bg-gray: #f4f4f4;
+            --text-dark: #1a1a1a;
+            --text-light: #666666;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Inter', sans-serif; 
+            color: var(--text-dark);
+            line-height: 1.5;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 { font-family: 'Blinker', sans-serif; text-transform: uppercase; line-height: 1.1; }
+
+        .headline-gradient {
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 800;
+        }
+
+        .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+
+        /* --- HERO (ESTILO PIERRE LUIZ - DARK PREMIUM) --- */
+        .hero {
+            background: #000;
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            padding: 40px 0;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-grid { display: grid; grid-template-columns: 1fr 400px; gap: 30px; align-items: center; }
+        .hero-text h1 { font-size: 3rem; margin: 15px 0; color: white; }
+        .hero-text p { font-size: 1.1rem; color: #ccc; margin-bottom: 25px; }
+        
+        .hero-info { border-left: 3px solid var(--primary-gold); padding-left: 15px; margin-bottom: 25px; font-size: 0.95rem; }
+        
+        .hero-image img {
+            width: 100%;
+            max-width: 380px;
+            display: block;
+            /* Efeito de fusão com o fundo preto */
+            mask-image: linear-gradient(to top, transparent 0%, black 15%);
+            -webkit-mask-image: linear-gradient(to top, transparent 0%, black 15%);
+        }
+
+        /* --- BOTÕES --- */
+        .btn-cta {
+            display: inline-block;
+            padding: 18px 35px;
+            background: var(--btn-green);
+            color: #fff;
+            font-weight: 800;
+            text-decoration: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            box-shadow: 0 10px 20px rgba(11, 111, 42, 0.2);
+            transition: 0.3s;
+            text-align: center;
+        }
+        .btn-cta:hover { transform: scale(1.03); filter: brightness(1.1); }
+
+        .floating-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            display: none;
+        }
+
+        /* --- SEÇÕES ALTERNADAS --- */
+        section { padding: 70px 0; }
+        .bg-white { background-color: var(--bg-white); }
+        .bg-gray { background-color: var(--bg-gray); }
+
+        .section-title { text-align: center; font-size: 2.2rem; margin-bottom: 40px; color: var(--text-dark); }
+
+        /* --- BLOCOS DE CONTEÚDO --- */
+        .flex-grid { display: flex; align-items: center; gap: 40px; }
+        .flex-grid.reverse { flex-direction: row-reverse; }
+        .flex-grid > div { flex: 1; }
+        
+        .small-img { max-width: 450px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+
+        .check-list { list-style: none; }
+        .check-list li { margin-bottom: 12px; display: flex; align-items: flex-start; gap: 10px; font-weight: 500; }
+        .check-list li::before { content: '✓'; color: #18c95a; font-weight: 800; }
+        .x-list li::before { content: '✕'; color: #ff4d4d; }
+
+        /* --- EFEITO POST-IT / COLLAGE --- */
+        .expert-collage {
+            position: relative;
+            width: 320px;
+            height: 380px;
+            margin: 0 auto;
+        }
+        .postit {
+            position: absolute;
+            border: 6px solid #fff;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+            background: #fff;
+        }
+        .img-main { width: 260px; z-index: 3; top: 20px; left: 20px; transform: rotate(-2deg); }
+        .img-1 { width: 150px; z-index: 2; right: -10px; top: 0; transform: rotate(8deg); }
+        .img-2 { width: 160px; z-index: 1; bottom: 10px; left: -20px; transform: rotate(-10deg); }
+
+        /* --- OFERTA --- */
+        .offer-card {
+            background: #fff;
+            border: 2px solid var(--primary-gold);
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        /* --- ESCASSEZ --- */
+        .scarcity {
+            background: #700;
+            color: #fff;
+            text-align: center;
+            padding: 30px 0;
+            font-weight: 700;
+            border-top: 4px solid #f00;
+        }
+
+        /* --- RESPONSIVIDADE --- */
+        @media (max-width: 768px) {
+            .hero-grid, .flex-grid { flex-direction: column; text-align: center; display: block; }
+            .hero-text h1 { font-size: 2.2rem; }
+            .hero-image { margin-top: 30px; }
+            .hero-image img { max-width: 280px; margin: 0 auto; }
+            .small-img { width: 100%; margin-top: 20px; }
+            .expert-collage { transform: scale(0.8); }
+        }
