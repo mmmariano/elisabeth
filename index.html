@@ -4256,73 +4256,147 @@ section.ponte-premium {
     }
 </style>
 
+<!-- BLOCO 4: CONTEÚDO PROGRAMÁTICO (COM ÍCONES COLORIDOS) -->
+<style>
+    /* Estilos específicos para as cores dos módulos */
+    .mod-1 { color: #ae9052 !important; } /* Dourado Roots */
+    .mod-2 { color: #00d4ff !important; } /* Azul Ciano */
+    .mod-3 { color: #a55eea !important; } /* Roxo */
+    .mod-4 { color: #20bf6b !important; } /* Verde Esmeralda */
+    .mod-5 { color: #eb3b5a !important; } /* Vermelho Coral */
+    .mod-6 { color: #fa8231 !important; } /* Laranja */
+    .mod-7 { color: #f7b731 !important; } /* Amarelo Sol */
+    .mod-8 { color: #4b7bec !important; } /* Azul Royal */
+
+    .mod-tag {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-weight: 800;
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-bottom: 12px;
+    }
+
+    .mod-tag svg {
+        width: 18px;
+        height: 18px;
+        fill: currentColor; /* O ícone assume a cor da classe mod-X */
+    }
+
+    .module-card-v2 {
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 16px;
+        padding: 25px;
+        transition: all 0.3s ease;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .module-card-v2:hover {
+        transform: translateY(-5px);
+        background: rgba(255, 255, 255, 0.04);
+        border-color: rgba(255, 255, 255, 0.1);
+    }
+</style>
+
 <section class="learning-section">
     <div class="container">
         
-        <!-- Cabeçalho -->
         <div class="learning-intro">
-		
-  
-		<div class="perfil-intro">
-            <h2>O conhecimento que faltava para transformar sua forma de <span class="headline-gradient">pensar, avaliar e tratar a dor.</span></h2>
-        </div>
+            <div class="perfil-intro">
+                <h2>O conhecimento que faltava para transformar sua forma de <span class="headline-gradient">pensar, avaliar e tratar a dor.</span></h2>
+            </div>
             <p>Em 8 módulos, você aprenderá os fundamentos que ajudam fisioterapeutas a desenvolver mais segurança clínica e gerar melhores resultados.</p>
         </div>
 
-        <!-- Grade de 8 Módulos (3 colunas preenchendo o espaço) -->
         <div class="modules-full-grid">
             
+            <!-- Módulo 1 -->
             <div class="module-card-v2">
-                <span class="mod-tag">Módulo 1</span>
+                <span class="mod-tag mod-1">
+                    <svg viewBox="0 0 24 24"><path d="M9.5 15.584V8.416a.5.5 0 0 1 .5-.5c4.418 0 8 3.582 8 8a.5.5 0 0 1-.5.5h-7.5a.5.5 0 0 1-.5-.416ZM11 14h5.477a6.502 6.502 0 0 0-5.477-4.477V14Zm-4.5 1.584V8.416a.5.5 0 0 0-.5-.5 8.01 8.01 0 0 0-4.043 1.111.5.5 0 0 0-.1.745l4.143 4.143V15.584a.5.5 0 0 0 .5.5h.5ZM5 14v-2.31l-1.637-1.637A6.51 6.51 0 0 0 3.03 14H5Zm14.5-5.416V15.584a.5.5 0 0 0 .5.5h.5a.5.5 0 0 0 .1-.745 8.01 8.01 0 0 0-4.043-1.111.5.5 0 0 0-.5.5v2.272l4.143-4.143ZM19 14h1.97a6.51 6.51 0 0 0-1.97-3.947V14ZM12 22a.5.5 0 0 1-.5-.5v-4a.5.5 0 0 1 .5-.5h.5a7.5 7.5 0 0 0 7.5-7.5.5.5 0 0 1 .5-.5h1.5a.5.5 0 0 1 .5.5 9.5 9.5 0 0 1-9.5 9.5h-.5v2.5a.5.5 0 0 1-.5.5Zm-1.5-.5v-4a.5.5 0 0 0-.5-.5h-.5A9.5 9.5 0 0 1 0 7.5a.5.5 0 0 1 .5-.5H2a.5.5 0 0 1 .5.5 7.5 7.5 0 0 0 7.5 7.5h.5a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5h-.5ZM12 2a9.51 9.51 0 0 1 9.5 9.5.5.5 0 0 1-.5.5h-1.5a.5.5 0 0 1-.5-.5A7.5 7.5 0 0 0 11.5 4a.5.5 0 0 1-.5-.5V2a.5.5 0 0 1 .5-.5h.5ZM9.5 2v1.5a.5.5 0 0 1-.5.5A7.5 7.5 0 0 0 1.5 11.5a.5.5 0 0 1-.5.5H-.5a.5.5 0 0 1-.5-.5A9.51 9.51 0 0 1 8.5 2h1Z"/></svg>
+                    Módulo 1
+                </span>
                 <h3>Conceitos Básicos Sobre Dor</h3>
                 <p>Fundamentos modernos da dor e por que ela não pode ser explicada apenas por alterações estruturais.</p>
             </div>
 
+            <!-- Módulo 2 -->
             <div class="module-card-v2">
-                <span class="mod-tag">Módulo 2</span>
+                <span class="mod-tag mod-2">
+                    <svg viewBox="0 0 24 24"><path d="M9.5 15.584V8.416a.5.5 0 0 1 .5-.5c4.418 0 8 3.582 8 8a.5.5 0 0 1-.5.5h-7.5a.5.5 0 0 1-.5-.416ZM11 14h5.477a6.502 6.502 0 0 0-5.477-4.477V14Zm-4.5 1.584V8.416a.5.5 0 0 0-.5-.5 8.01 8.01 0 0 0-4.043 1.111.5.5 0 0 0-.1.745l4.143 4.143V15.584a.5.5 0 0 0 .5.5h.5ZM5 14v-2.31l-1.637-1.637A6.51 6.51 0 0 0 3.03 14H5Zm14.5-5.416V15.584a.5.5 0 0 0 .5.5h.5a.5.5 0 0 0 .1-.745 8.01 8.01 0 0 0-4.043-1.111.5.5 0 0 0-.5.5v2.272l4.143-4.143ZM19 14h1.97a6.51 6.51 0 0 0-1.97-3.947V14ZM12 22a.5.5 0 0 1-.5-.5v-4a.5.5 0 0 1 .5-.5h.5a7.5 7.5 0 0 0 7.5-7.5.5.5 0 0 1 .5-.5h1.5a.5.5 0 0 1 .5.5 9.5 9.5 0 0 1-9.5 9.5h-.5v2.5a.5.5 0 0 1-.5.5Zm-1.5-.5v-4a.5.5 0 0 0-.5-.5h-.5A9.5 9.5 0 0 1 0 7.5a.5.5 0 0 1 .5-.5H2a.5.5 0 0 1 .5.5 7.5 7.5 0 0 0 7.5 7.5h.5a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5h-.5ZM12 2a9.51 9.51 0 0 1 9.5 9.5.5.5 0 0 1-.5.5h-1.5a.5.5 0 0 1-.5-.5A7.5 7.5 0 0 0 11.5 4a.5.5 0 0 1-.5-.5V2a.5.5 0 0 1 .5-.5h.5ZM9.5 2v1.5a.5.5 0 0 1-.5.5A7.5 7.5 0 0 0 1.5 11.5a.5.5 0 0 1-.5.5H-.5a.5.5 0 0 1-.5-.5A9.51 9.51 0 0 1 8.5 2h1Z"/></svg>
+                    Módulo 2
+                </span>
                 <h3>Descritores e Mecanismos</h3>
                 <p>Diferencie o relato do paciente do que ocorre no organismo. Organize seu raciocínio sem achismos.</p>
             </div>
 
+            <!-- Módulo 3 -->
             <div class="module-card-v2">
-                <span class="mod-tag">Módulo 3</span>
+                <span class="mod-tag mod-3">
+                    <svg viewBox="0 0 24 24"><path d="M9.5 15.584V8.416a.5.5 0 0 1 .5-.5c4.418 0 8 3.582 8 8a.5.5 0 0 1-.5.5h-7.5a.5.5 0 0 1-.5-.416ZM11 14h5.477a6.502 6.502 0 0 0-5.477-4.477V14Zm-4.5 1.584V8.416a.5.5 0 0 0-.5-.5 8.01 8.01 0 0 0-4.043 1.111.5.5 0 0 0-.1.745l4.143 4.143V15.584a.5.5 0 0 0 .5.5h.5ZM5 14v-2.31l-1.637-1.637A6.51 6.51 0 0 0 3.03 14H5Zm14.5-5.416V15.584a.5.5 0 0 0 .5.5h.5a.5.5 0 0 0 .1-.745 8.01 8.01 0 0 0-4.043-1.111.5.5 0 0 0-.5.5v2.272l4.143-4.143ZM19 14h1.97a6.51 6.51 0 0 0-1.97-3.947V14ZM12 22a.5.5 0 0 1-.5-.5v-4a.5.5 0 0 1 .5-.5h.5a7.5 7.5 0 0 0 7.5-7.5.5.5 0 0 1 .5-.5h1.5a.5.5 0 0 1 .5.5 9.5 9.5 0 0 1-9.5 9.5h-.5v2.5a.5.5 0 0 1-.5.5Zm-1.5-.5v-4a.5.5 0 0 0-.5-.5h-.5A9.5 9.5 0 0 1 0 7.5a.5.5 0 0 1 .5-.5H2a.5.5 0 0 1 .5.5 7.5 7.5 0 0 0 7.5 7.5h.5a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5h-.5ZM12 2a9.51 9.51 0 0 1 9.5 9.5.5.5 0 0 1-.5.5h-1.5a.5.5 0 0 1-.5-.5A7.5 7.5 0 0 0 11.5 4a.5.5 0 0 1-.5-.5V2a.5.5 0 0 1 .5-.5h.5ZM9.5 2v1.5a.5.5 0 0 1-.5.5A7.5 7.5 0 0 0 1.5 11.5a.5.5 0 0 1-.5.5H-.5a.5.5 0 0 1-.5-.5A9.51 9.51 0 0 1 8.5 2h1Z"/></svg>
+                    Módulo 3
+                </span>
                 <h3>Modelo Biopsicossocial</h3>
                 <p>Integre fatores físicos, emocionais e sociais na sua prática, superando o modelo biomédico tradicional.</p>
             </div>
 
+            <!-- Módulo 4 -->
             <div class="module-card-v2">
-                <span class="mod-tag">Módulo 4</span>
+                <span class="mod-tag mod-4">
+                    <svg viewBox="0 0 24 24"><path d="M9.5 15.584V8.416a.5.5 0 0 1 .5-.5c4.418 0 8 3.582 8 8a.5.5 0 0 1-.5.5h-7.5a.5.5 0 0 1-.5-.416ZM11 14h5.477a6.502 6.502 0 0 0-5.477-4.477V14Zm-4.5 1.584V8.416a.5.5 0 0 0-.5-.5 8.01 8.01 0 0 0-4.043 1.111.5.5 0 0 0-.1.745l4.143 4.143V15.584a.5.5 0 0 0 .5.5h.5ZM5 14v-2.31l-1.637-1.637A6.51 6.51 0 0 0 3.03 14H5Zm14.5-5.416V15.584a.5.5 0 0 0 .5.5h.5a.5.5 0 0 0 .1-.745 8.01 8.01 0 0 0-4.043-1.111.5.5 0 0 0-.5.5v2.272l4.143-4.143ZM19 14h1.97a6.51 6.51 0 0 0-1.97-3.947V14ZM12 22a.5.5 0 0 1-.5-.5v-4a.5.5 0 0 1 .5-.5h.5a7.5 7.5 0 0 0 7.5-7.5.5.5 0 0 1 .5-.5h1.5a.5.5 0 0 1 .5.5 9.5 9.5 0 0 1-9.5 9.5h-.5v2.5a.5.5 0 0 1-.5.5Zm-1.5-.5v-4a.5.5 0 0 0-.5-.5h-.5A9.5 9.5 0 0 1 0 7.5a.5.5 0 0 1 .5-.5H2a.5.5 0 0 1 .5.5 7.5 7.5 0 0 0 7.5 7.5h.5a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5h-.5ZM12 2a9.51 9.51 0 0 1 9.5 9.5.5.5 0 0 1-.5.5h-1.5a.5.5 0 0 1-.5-.5A7.5 7.5 0 0 0 11.5 4a.5.5 0 0 1-.5-.5V2a.5.5 0 0 1 .5-.5h.5ZM9.5 2v1.5a.5.5 0 0 1-.5.5A7.5 7.5 0 0 0 1.5 11.5a.5.5 0 0 1-.5.5H-.5a.5.5 0 0 1-.5-.5A9.51 9.51 0 0 1 8.5 2h1Z"/></svg>
+                    Módulo 4
+                </span>
                 <h3>Terapia Cognitivo-Funcional</h3>
                 <p>Princípios da CFT: significado da dor, exposição gradual ao movimento e mudanças sustentáveis.</p>
             </div>
 
+            <!-- Módulo 5 -->
             <div class="module-card-v2">
-                <span class="mod-tag">Módulo 5</span>
+                <span class="mod-tag mod-5">
+                    <svg viewBox="0 0 24 24"><path d="M9.5 15.584V8.416a.5.5 0 0 1 .5-.5c4.418 0 8 3.582 8 8a.5.5 0 0 1-.5.5h-7.5a.5.5 0 0 1-.5-.416ZM11 14h5.477a6.502 6.502 0 0 0-5.477-4.477V14Zm-4.5 1.584V8.416a.5.5 0 0 0-.5-.5 8.01 8.01 0 0 0-4.043 1.111.5.5 0 0 0-.1.745l4.143 4.143V15.584a.5.5 0 0 0 .5.5h.5ZM5 14v-2.31l-1.637-1.637A6.51 6.51 0 0 0 3.03 14H5Zm14.5-5.416V15.584a.5.5 0 0 0 .5.5h.5a.5.5 0 0 0 .1-.745 8.01 8.01 0 0 0-4.043-1.111.5.5 0 0 0-.5.5v2.272l4.143-4.143ZM19 14h1.97a6.51 6.51 0 0 0-1.97-3.947V14ZM12 22a.5.5 0 0 1-.5-.5v-4a.5.5 0 0 1 .5-.5h.5a7.5 7.5 0 0 0 7.5-7.5.5.5 0 0 1 .5-.5h1.5a.5.5 0 0 1 .5.5 9.5 9.5 0 0 1-9.5 9.5h-.5v2.5a.5.5 0 0 1-.5.5Zm-1.5-.5v-4a.5.5 0 0 0-.5-.5h-.5A9.5 9.5 0 0 1 0 7.5a.5.5 0 0 1 .5-.5H2a.5.5 0 0 1 .5.5 7.5 7.5 0 0 0 7.5 7.5h.5a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5h-.5ZM12 2a9.51 9.51 0 0 1 9.5 9.5.5.5 0 0 1-.5.5h-1.5a.5.5 0 0 1-.5-.5A7.5 7.5 0 0 0 11.5 4a.5.5 0 0 1-.5-.5V2a.5.5 0 0 1 .5-.5h.5ZM9.5 2v1.5a.5.5 0 0 1-.5.5A7.5 7.5 0 0 0 1.5 11.5a.5.5 0 0 1-.5.5H-.5a.5.5 0 0 1-.5-.5A9.51 9.51 0 0 1 8.5 2h1Z"/></svg>
+                    Módulo 5
+                </span>
                 <h3>Aliança Terapêutica</h3>
                 <p>Construa confiança e aumente a adesão através de uma comunicação que influencia os resultados.</p>
             </div>
 
+            <!-- Módulo 6 -->
             <div class="module-card-v2">
-                <span class="mod-tag">Módulo 6</span>
+                <span class="mod-tag mod-6">
+                    <svg viewBox="0 0 24 24"><path d="M9.5 15.584V8.416a.5.5 0 0 1 .5-.5c4.418 0 8 3.582 8 8a.5.5 0 0 1-.5.5h-7.5a.5.5 0 0 1-.5-.416ZM11 14h5.477a6.502 6.502 0 0 0-5.477-4.477V14Zm-4.5 1.584V8.416a.5.5 0 0 0-.5-.5 8.01 8.01 0 0 0-4.043 1.111.5.5 0 0 0-.1.745l4.143 4.143V15.584a.5.5 0 0 0 .5.5h.5ZM5 14v-2.31l-1.637-1.637A6.51 6.51 0 0 0 3.03 14H5Zm14.5-5.416V15.584a.5.5 0 0 0 .5.5h.5a.5.5 0 0 0 .1-.745 8.01 8.01 0 0 0-4.043-1.111.5.5 0 0 0-.5.5v2.272l4.143-4.143ZM19 14h1.97a6.51 6.51 0 0 0-1.97-3.947V14ZM12 22a.5.5 0 0 1-.5-.5v-4a.5.5 0 0 1 .5-.5h.5a7.5 7.5 0 0 0 7.5-7.5.5.5 0 0 1 .5-.5h1.5a.5.5 0 0 1 .5.5 9.5 9.5 0 0 1-9.5 9.5h-.5v2.5a.5.5 0 0 1-.5.5Zm-1.5-.5v-4a.5.5 0 0 0-.5-.5h-.5A9.5 9.5 0 0 1 0 7.5a.5.5 0 0 1 .5-.5H2a.5.5 0 0 1 .5.5 7.5 7.5 0 0 0 7.5 7.5h.5a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5h-.5ZM12 2a9.51 9.51 0 0 1 9.5 9.5.5.5 0 0 1-.5.5h-1.5a.5.5 0 0 1-.5-.5A7.5 7.5 0 0 0 11.5 4a.5.5 0 0 1-.5-.5V2a.5.5 0 0 1 .5-.5h.5ZM9.5 2v1.5a.5.5 0 0 1-.5.5A7.5 7.5 0 0 0 1.5 11.5a.5.5 0 0 1-.5.5H-.5a.5.5 0 0 1-.5-.5A9.51 9.51 0 0 1 8.5 2h1Z"/></svg>
+                    Módulo 6
+                </span>
                 <h3>Autoeficácia na Dor</h3>
                 <p>Identifique e desenvolva a autoeficácia, fator crucial para o prognóstico e recuperação funcional.</p>
             </div>
 
+            <!-- Módulo 7 -->
             <div class="module-card-v2">
-                <span class="mod-tag">Módulo 7</span>
+                <span class="mod-tag mod-7">
+                    <svg viewBox="0 0 24 24"><path d="M9.5 15.584V8.416a.5.5 0 0 1 .5-.5c4.418 0 8 3.582 8 8a.5.5 0 0 1-.5.5h-7.5a.5.5 0 0 1-.5-.416ZM11 14h5.477a6.502 6.502 0 0 0-5.477-4.477V14Zm-4.5 1.584V8.416a.5.5 0 0 0-.5-.5 8.01 8.01 0 0 0-4.043 1.111.5.5 0 0 0-.1.745l4.143 4.143V15.584a.5.5 0 0 0 .5.5h.5ZM5 14v-2.31l-1.637-1.637A6.51 6.51 0 0 0 3.03 14H5Zm14.5-5.416V15.584a.5.5 0 0 0 .5.5h.5a.5.5 0 0 0 .1-.745 8.01 8.01 0 0 0-4.043-1.111.5.5 0 0 0-.5.5v2.272l4.143-4.143ZM19 14h1.97a6.51 6.51 0 0 0-1.97-3.947V14ZM12 22a.5.5 0 0 1-.5-.5v-4a.5.5 0 0 1 .5-.5h.5a7.5 7.5 0 0 0 7.5-7.5.5.5 0 0 1 .5-.5h1.5a.5.5 0 0 1 .5.5 9.5 9.5 0 0 1-9.5 9.5h-.5v2.5a.5.5 0 0 1-.5.5Zm-1.5-.5v-4a.5.5 0 0 0-.5-.5h-.5A9.5 9.5 0 0 1 0 7.5a.5.5 0 0 1 .5-.5H2a.5.5 0 0 1 .5.5 7.5 7.5 0 0 0 7.5 7.5h.5a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5h-.5ZM12 2a9.51 9.51 0 0 1 9.5 9.5.5.5 0 0 1-.5.5h-1.5a.5.5 0 0 1-.5-.5A7.5 7.5 0 0 0 11.5 4a.5.5 0 0 1-.5-.5V2a.5.5 0 0 1 .5-.5h.5ZM9.5 2v1.5a.5.5 0 0 1-.5.5A7.5 7.5 0 0 0 1.5 11.5a.5.5 0 0 1-.5.5H-.5a.5.5 0 0 1-.5-.5A9.51 9.51 0 0 1 8.5 2h1Z"/></svg>
+                    Módulo 7
+                </span>
                 <h3>Avaliação Estratégica</h3>
                 <p>Transforme a avaliação em tomada de decisão. Colete dados relevantes e crie hipóteses precisas.</p>
             </div>
 
+            <!-- Módulo 8 -->
             <div class="module-card-v2">
-                <span class="mod-tag">Módulo 8</span>
+                <span class="mod-tag mod-8">
+                    <svg viewBox="0 0 24 24"><path d="M9.5 15.584V8.416a.5.5 0 0 1 .5-.5c4.418 0 8 3.582 8 8a.5.5 0 0 1-.5.5h-7.5a.5.5 0 0 1-.5-.416ZM11 14h5.477a6.502 6.502 0 0 0-5.477-4.477V14Zm-4.5 1.584V8.416a.5.5 0 0 0-.5-.5 8.01 8.01 0 0 0-4.043 1.111.5.5 0 0 0-.1.745l4.143 4.143V15.584a.5.5 0 0 0 .5.5h.5ZM5 14v-2.31l-1.637-1.637A6.51 6.51 0 0 0 3.03 14H5Zm14.5-5.416V15.584a.5.5 0 0 0 .5.5h.5a.5.5 0 0 0 .1-.745 8.01 8.01 0 0 0-4.043-1.111.5.5 0 0 0-.5.5v2.272l4.143-4.143ZM19 14h1.97a6.51 6.51 0 0 0-1.97-3.947V14ZM12 22a.5.5 0 0 1-.5-.5v-4a.5.5 0 0 1 .5-.5h.5a7.5 7.5 0 0 0 7.5-7.5.5.5 0 0 1 .5-.5h1.5a.5.5 0 0 1 .5.5 9.5 9.5 0 0 1-9.5 9.5h-.5v2.5a.5.5 0 0 1-.5.5Zm-1.5-.5v-4a.5.5 0 0 0-.5-.5h-.5A9.5 9.5 0 0 1 0 7.5a.5.5 0 0 1 .5-.5H2a.5.5 0 0 1 .5.5 7.5 7.5 0 0 0 7.5 7.5h.5a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5h-.5ZM12 2a9.51 9.51 0 0 1 9.5 9.5.5.5 0 0 1-.5.5h-1.5a.5.5 0 0 1-.5-.5A7.5 7.5 0 0 0 11.5 4a.5.5 0 0 1-.5-.5V2a.5.5 0 0 1 .5-.5h.5ZM9.5 2v1.5a.5.5 0 0 1-.5.5A7.5 7.5 0 0 0 1.5 11.5a.5.5 0 0 1-.5.5H-.5a.5.5 0 0 1-.5-.5A9.51 9.51 0 0 1 8.5 2h1Z"/></svg>
+                    Módulo 8
+                </span>
                 <h3>Princípios Roots</h3>
                 <p>Modificação de sintomas e foco externo para reduzir a hipervigilância e dar confiança ao paciente.</p>
             </div>
 
         </div>
 
-        <!-- Card de Ação Final (Centralizado abaixo de tudo) -->
+        <!-- Card de Ação Final -->
         <div class="learning-final-cta">
             <div class="gif-box">
                 <img src="masterclass.gif" alt="Masterclass Elisabeth Pinheiro">
