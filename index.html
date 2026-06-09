@@ -4288,6 +4288,165 @@ section.ponte-premium {
             max-width: 100% !important;
         }
     }
+	@media (max-width: 768px) {
+    /* 1. Garante que a seção Hero tenha espaço para os dois blocos (texto e imagem) */
+    section.hero {
+        padding-top: 20px !important;
+        padding-bottom: 40px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        height: auto !important;
+        min-height: auto !important;
+    }
+
+    /* 2. Ajusta o Título para não subir demais */
+    .hero h1 {
+        margin-top: 0 !important; /* Remove o valor negativo que estava sobrepondo */
+        margin-bottom: 15px !important;
+        font-size: 1.6rem !important;
+        text-align: center !important;
+    }
+
+    /* 3. O SEGREDO: Empurra a imagem para baixo do texto */
+    .hero-image-container {
+        margin-top: 40px !important; /* Cria um espaço de 40px entre o botão/texto e a foto */
+        position: relative !important;
+        display: block !important;
+        width: 100% !important;
+    }
+
+    /* 4. Ajusta a foto da Elisabeth para não ficar gigante e não subir */
+    .mobile-img {
+        display: block !important;
+        max-width: 250px !important; /* Tamanho ideal para não cobrir o texto */
+        margin: 0 auto !important;
+        position: relative !important;
+        z-index: 10 !important;
+    }
+
+    /* 5. Garante que a nuvem de comprovantes fique atrás da foto e não do texto */
+    .proof-cloud {
+        position: absolute !important;
+        top: 50% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) !important;
+        width: 100% !important;
+        z-index: 1 !important;
+    }
+}
+/* --- AJUSTE DOS SELOS ALINHADOS AO BOTÃO --- */
+.hero-info {
+    display: flex;
+    flex-direction: column; /* No mobile fica um embaixo do outro */
+    gap: 15px;
+    margin-top: 25px;       /* Espaço entre o texto e os selos */
+    margin-bottom: 25px;    /* Espaço entre os selos e o botão */
+    width: 100%;
+}
+
+.hero-info-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #fff;
+    font-family: 'Blinker', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.hero-info-item svg {
+    flex-shrink: 0;
+}
+
+/* --- AJUSTES PARA COMPUTADOR (DESKTOP) --- */
+@media (min-width: 768px) {
+    .hero-info {
+        flex-direction: row; /* Coloca um ao lado do outro */
+        align-items: center;
+        gap: 0; /* Vamos controlar o espaço pelo padding do divisor */
+    }
+
+    .hero-info-item:first-child {
+        /* Este é o "risco vertical" (divisor) */
+        border-right: 1px solid rgba(174, 144, 82, 0.4); 
+        padding-right: 20px;
+        margin-right: 20px;
+    }
+    
+    /* Garante que o bloco de info não tenha margens que o tirem do alinhamento do botão */
+    .hero-text {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start; /* Alinha tudo à esquerda no desktop */
+    }
+}
+
+/* --- AJUSTES PARA CELULAR (MOBILE) --- */
+@media (max-width: 767px) {
+    .hero-info {
+        align-items: center; /* Centraliza no mobile junto com o botão */
+        text-align: center;
+        gap: 12px;
+    }
+    
+    .hero-info-item {
+        justify-content: center;
+    }
+    
+    /* No mobile não costuma ter o risco vertical, mas se quiser, pode manter */
+    .hero-info-item:first-child {
+        border-right: none;
+        padding-right: 0;
+        margin-right: 0;
+    }
+}
+/* --- AJUSTE DE CENTRALIZAÇÃO PERFEITA --- */
+.luxury-grid-v4 {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 50% para cada lado para simetria total */
+    background: #080808;
+    border-radius: 38px;
+    align-items: stretch;
+}
+
+.luxury-right-side {
+    /* Remove padding excessivo na esquerda que empurra o preço */
+    padding: 40px !important; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; /* Centraliza horizontalmente */
+    text-align: center;
+    background: rgba(255, 255, 255, 0.01);
+    width: 100%;
+}
+
+.luxury-price-card {
+    width: 100%;
+    max-width: 350px;
+    /* margin: 0 auto garante que o card fique no meio do espaço disponível */
+    margin: 0 auto !important; 
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(174, 144, 82, 0.3);
+    border-radius: 24px;
+    padding: 30px;
+}
+
+/* Ajuste específico para Mobile */
+@media (max-width: 768px) {
+    .luxury-grid-v4 {
+        grid-template-columns: 1fr !important;
+    }
+    .luxury-right-side {
+        padding: 30px 20px !important; /* Padding igual nos dois lados */
+    }
+    .luxury-price-card {
+        max-width: 100% !important;
+    }
+}
+
 </style>
 
 <section class="luxury-offer-v4" id="oferta">
