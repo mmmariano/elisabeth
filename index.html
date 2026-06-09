@@ -4182,82 +4182,110 @@ section.ponte-premium {
         </div>
     </div>
 </section>
-<!-- BLOCO 7: O ARSENAL SUPREMO - VERSÃO FINAL LUXURY -->
+<!-- BLOCO 7: O ARSENAL SUPREMO - VERSÃO FINAL LUXURY CORRIGIDA -->
 <style>
-    /* Ajustes Gerais e Responsividade */
+    /* Estilos Base Desktop */
     .luxury-offer-v4 {
-        padding: 60px 0;
+        background: #000 !important;
+        padding: 100px 0;
+        position: relative;
         overflow: hidden;
     }
     
+    .luxury-main-card {
+        position: relative;
+        z-index: 1;
+        background: rgba(10, 10, 10, 0.85);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 40px;
+        overflow: hidden;
+        backdrop-filter: blur(30px);
+    }
+
     .luxury-grid-v4 {
         display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 40px;
-        align-items: center;
+        grid-template-columns: 1.1fr 0.9fr;
+        background: #080808;
+        align-items: stretch;
+    }
+
+    .luxury-left-side {
+        padding: 60px;
+        border-right: 1px solid rgba(255, 255, 255, 0.05);
     }
 
     .luxury-right-side {
+        padding: 60px;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
         text-align: center;
+        background: rgba(255, 255, 255, 0.01);
     }
 
-    .img-depo-v4 {
+    .luxury-price-card {
         width: 100%;
-        max-width: 500px;
-        border-radius: 15px;
-        box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        max-width: 350px;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(174, 144, 82, 0.3);
+        border-radius: 24px;
+        padding: 30px;
+        margin-top: 20px; /* Espaço controlado no desktop */
     }
 
-    /* AJUSTES PARA MOBILE */
+    /* AJUSTES FINOS PARA MOBILE (CORREÇÃO DE ESPAÇOS) */
     @media (max-width: 768px) {
         .luxury-offer-v4 {
-            padding: 20px 0;
+            padding: 40px 0 !important; /* Reduz espaço externo da seção */
+        }
+
+        .luxury-main-card {
+            margin: 0 15px !important;
         }
 
         .luxury-grid-v4 {
-            grid-template-columns: 1fr; /* Empilha as colunas */
-            gap: 20px; /* Reduz espaço entre as partes */
+            grid-template-columns: 1fr !important;
         }
 
         .luxury-left-side {
-            order: 2; /* Coloca o depoimento abaixo do preço se preferir, ou deixe 1 */
-            text-align: center;
+            padding: 30px 20px !important;
+            border-right: none !important;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
         }
 
         .luxury-right-side {
-            order: 1;
-            padding: 10px !important; /* Remove excesso de espaço lateral */
+            padding: 25px 20px !important; /* Reduz padding interno do lado direito */
+        }
+
+        .offer-brand-box {
+            margin-bottom: 15px !important; /* Reduz espaço entre logo e preço */
+        }
+
+        .logo-final {
+            max-width: 180px !important;
+        }
+
+        .luxury-price-card {
+            margin-top: 0px !important; /* ELIMINA o "buraco" acima do preço */
+            padding: 20px !important; /* Enxuga o card internamente */
+        }
+
+        .price-display {
+            margin-bottom: 15px !important; /* Aproxima o preço do botão */
+        }
+
+        .price-display div:nth-child(2) {
+            font-size: 2.4rem !important; /* Preço levemente menor para mobile */
         }
 
         .luxury-phrase {
             font-size: 1.5rem !important;
-            margin-bottom: 15px;
-        }
-
-        .offer-brand-box {
-            margin-bottom: 20px !important; /* Reduz espaço entre logo e preço */
-        }
-
-        .logo-final {
-            max-width: 200px !important; /* Logo menor no mobile */
-        }
-
-        .luxury-price-card {
-            padding: 20px !important;
-            width: 100% !important;
-            max-width: 100% !important;
-        }
-
-        .price-display div:nth-child(2) {
-            font-size: 2.2rem !important; /* Preço menor para não quebrar */
+            margin-bottom: 15px !important;
         }
         
-        .luxury-image-frame {
-            margin-top: 20px;
+        .img-depo-v4 {
+            max-width: 100% !important;
         }
     }
 </style>
@@ -4287,23 +4315,23 @@ section.ponte-premium {
                 <div class="luxury-right-side">
                     
                     <!-- Logo -->
-                    <div class="offer-brand-box" style="margin-bottom: 40px; width: 100%;">
-                        <img src="logotipo.png" alt="Elisabeth Pinheiro" class="logo-final" style="max-width: 300px; height: auto; margin: 0 auto; display: block;">
+                    <div class="offer-brand-box">
+                        <img src="logotipo.png" alt="Elisabeth Pinheiro" class="logo-final" style="display: block; margin: 0 auto;">
                     </div>
 
                     <!-- Card de Preço -->
-                    <div class="luxury-price-card" style="width: 100%; max-width: 350px; background: rgba(255,255,255,0.03); border: 1px solid rgba(174, 144, 82, 0.3); border-radius: 20px; padding: 30px;">
+                    <div class="luxury-price-card">
                         
-                        <div class="price-display" style="margin-bottom: 25px;">
-                            <span style="color: #888; font-size: 0.9rem; display: block; margin-bottom: 5px; letter-spacing: 0.5px;">
+                        <div class="price-display">
+                            <span style="color: #888; font-size: 0.85rem; display: block; margin-bottom: 5px; letter-spacing: 0.5px;">
                                 De <span style="text-decoration: line-through;">R$ 197,00</span> por apenas
                             </span>
                             
-                            <div style="color: #ae9052; font-size: 2.8rem; font-weight: 800; line-height: 1; margin-bottom: 10px; letter-spacing: -1px;">
+                            <div style="color: #ae9052; font-size: 2.8rem; font-weight: 800; line-height: 1.1; margin-bottom: 10px; letter-spacing: -1px;">
                                 12x de R$ 10,03
                             </div>
                             
-                            <div style="color: #ffffff; font-size: 1.1rem; font-weight: 300; letter-spacing: 1px;">
+                            <div style="color: #ffffff; font-size: 1rem; font-weight: 300; letter-spacing: 1px;">
                                 ou <strong style="color: #fff;">R$ 97,00</strong> à vista
                             </div>
                         </div>
@@ -4314,13 +4342,13 @@ section.ponte-premium {
                                class="btn-cta" 
                                target="_blank" 
                                rel="noopener noreferrer" 
-                               style="display: flex; justify-content: center; align-items: center; width: 100%; padding: 18px; font-size: 1rem; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; text-decoration: none; background: #ae9052; color: #000; border-radius: 10px; transition: 0.3s;">
+                               style="display: flex; justify-content: center; align-items: center; width: 100%; padding: 16px; font-size: 1rem; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; text-decoration: none; background: #ae9052; color: #000; border-radius: 10px;">
                                 Garanta seu Acesso
                             </a>
                         </div>
                         
-                        <p style="color: #666; font-size: 0.75rem; margin-top: 15px; text-transform: uppercase; letter-spacing: 1px; display: flex; align-items: center; justify-content: center;">
-                            <svg viewBox="0 0 24 24" width="12" fill="#666" style="margin-right: 6px;"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
+                        <p style="color: #555; font-size: 0.7rem; margin-top: 12px; text-transform: uppercase; letter-spacing: 1px; display: flex; align-items: center; justify-content: center;">
+                            <svg viewBox="0 0 24 24" width="10" fill="#555" style="margin-right: 5px;"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
                             Compra 100% Segura
                         </p>
                     </div>
