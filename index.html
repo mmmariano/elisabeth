@@ -3709,7 +3709,7 @@ html body .hero-text p {
 
     .img-depo-v4 {
         width: 100% !important;
-        height: 130px !important;
+        height: 100px !important;
     }
 
     /* Ajuste do lado do preço e botão */
@@ -4182,19 +4182,96 @@ section.ponte-premium {
         </div>
     </div>
 </section>
-
 <!-- BLOCO 7: O ARSENAL SUPREMO - VERSÃO FINAL LUXURY -->
+<style>
+    /* Ajustes Gerais e Responsividade */
+    .luxury-offer-v4 {
+        padding: 60px 0;
+        overflow: hidden;
+    }
+    
+    .luxury-grid-v4 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+        align-items: center;
+    }
+
+    .luxury-right-side {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+    .img-depo-v4 {
+        width: 100%;
+        max-width: 500px;
+        border-radius: 15px;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    }
+
+    /* AJUSTES PARA MOBILE */
+    @media (max-width: 768px) {
+        .luxury-offer-v4 {
+            padding: 20px 0;
+        }
+
+        .luxury-grid-v4 {
+            grid-template-columns: 1fr; /* Empilha as colunas */
+            gap: 20px; /* Reduz espaço entre as partes */
+        }
+
+        .luxury-left-side {
+            order: 2; /* Coloca o depoimento abaixo do preço se preferir, ou deixe 1 */
+            text-align: center;
+        }
+
+        .luxury-right-side {
+            order: 1;
+            padding: 10px !important; /* Remove excesso de espaço lateral */
+        }
+
+        .luxury-phrase {
+            font-size: 1.5rem !important;
+            margin-bottom: 15px;
+        }
+
+        .offer-brand-box {
+            margin-bottom: 20px !important; /* Reduz espaço entre logo e preço */
+        }
+
+        .logo-final {
+            max-width: 200px !important; /* Logo menor no mobile */
+        }
+
+        .luxury-price-card {
+            padding: 20px !important;
+            width: 100% !important;
+            max-width: 100% !important;
+        }
+
+        .price-display div:nth-child(2) {
+            font-size: 2.2rem !important; /* Preço menor para não quebrar */
+        }
+        
+        .luxury-image-frame {
+            margin-top: 20px;
+        }
+    }
+</style>
+
 <section class="luxury-offer-v4" id="oferta">
     <div class="luxury-glow-bg"></div>
     
     <div class="container">
         <div class="luxury-main-card">
-            <!-- Efeito de feixe de luz na borda -->
             <div class="border-beam-effect"></div>
 
             <div class="luxury-grid-v4">
                 
-                <!-- LADO ESQUERDO: PROVA E FRASE DE IMPACTO -->
+                <!-- LADO ESQUERDO: PROVA -->
                 <div class="luxury-left-side">
                     <div class="luxury-quote-box">
                         <span class="quote-eyebrow">A REALIDADE DOS ALUNOS</span>
@@ -4202,24 +4279,23 @@ section.ponte-premium {
                     </div>
                     
                     <div class="luxury-image-frame">
-                     
                         <img src="depo-principal.jpeg" alt="Depoimento Elisabeth Pinheiro" class="img-depo-v4">
                     </div>
                 </div>
 	
-<!-- LADO DIREITO: FECHAMENTO (LOGO + PREÇO + BOTÃO) -->
-                <div class="luxury-right-side" style="display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 20px;">
+                <!-- LADO DIREITO: FECHAMENTO -->
+                <div class="luxury-right-side">
                     
-                    <!-- Logo centralizada com margem controlada -->
+                    <!-- Logo -->
                     <div class="offer-brand-box" style="margin-bottom: 40px; width: 100%;">
-                        <img src="logotipo.png" alt="Elisabeth Pinheiro" class="logo-final" style="max-width: 300px; height: auto; margin: 0 auto;">
+                        <img src="logotipo.png" alt="Elisabeth Pinheiro" class="logo-final" style="max-width: 300px; height: auto; margin: 0 auto; display: block;">
                     </div>
 
-                    <!-- Card de Preço com alinhamento interno aprimorado -->
-                    <div class="luxury-price-card" style="width: 100%; max-width: 350px;">
+                    <!-- Card de Preço -->
+                    <div class="luxury-price-card" style="width: 100%; max-width: 350px; background: rgba(255,255,255,0.03); border: 1px solid rgba(174, 144, 82, 0.3); border-radius: 20px; padding: 30px;">
                         
                         <div class="price-display" style="margin-bottom: 25px;">
-                            <span style="color: #888; font-size: 1rem; display: block; margin-bottom: 10px; letter-spacing: 0.5px;">
+                            <span style="color: #888; font-size: 0.9rem; display: block; margin-bottom: 5px; letter-spacing: 0.5px;">
                                 De <span style="text-decoration: line-through;">R$ 197,00</span> por apenas
                             </span>
                             
@@ -4232,20 +4308,19 @@ section.ponte-premium {
                             </div>
                         </div>
 
-                        <!-- Botão com largura total dentro do card -->
+                        <!-- Botão -->
                         <div style="width: 100%;">
                             <a href="https://pay.hotmart.com/V105400235X?checkoutMode=10" 
                                class="btn-cta" 
                                target="_blank" 
                                rel="noopener noreferrer" 
-                               style="display: flex; justify-content: center; align-items: center; width: 100%; padding: 20px; font-size: 1.1rem; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; text-decoration: none;">
+                               style="display: flex; justify-content: center; align-items: center; width: 100%; padding: 18px; font-size: 1rem; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; text-decoration: none; background: #ae9052; color: #000; border-radius: 10px; transition: 0.3s;">
                                 Garanta seu Acesso
                             </a>
                         </div>
                         
-                        <!-- Selo de garantia ou info extra (opcional) -->
-                        <p style="color: #666; font-size: 0.75rem; margin-top: 15px; text-transform: uppercase; letter-spacing: 1px;">
-                            <svg viewBox="0 0 24 24" width="12" fill="#666" style="vertical-align: middle; margin-right: 4px;"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
+                        <p style="color: #666; font-size: 0.75rem; margin-top: 15px; text-transform: uppercase; letter-spacing: 1px; display: flex; align-items: center; justify-content: center;">
+                            <svg viewBox="0 0 24 24" width="12" fill="#666" style="margin-right: 6px;"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
                             Compra 100% Segura
                         </p>
                     </div>
