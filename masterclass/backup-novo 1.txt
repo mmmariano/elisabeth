@@ -1,0 +1,3075 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O Jeito Roots - Elisabeth Pinheiro</title>
+    <link href="https://fonts.googleapis.com/css2?family=Blinker:wght@300;400;600;700&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+<style>
+    /* ============================================================
+       AJUSTES SOLICITADOS - DARK THEME & EXPERT SECTION
+    ============================================================ */
+
+    /* --- GLOBAL --- */
+    body { background: #000000; }
+
+    /* --- BLOCO 5: METODOLOGIA (ACIMA) --- */
+    .metodologia-section {
+        background: #000000 !important; /* Preto absoluto sem transparência */
+        border-top: 1px solid rgba(255,255,255,0.05);
+        padding: 100px 0;
+    }
+
+    /* --- BLOCO 6: EXPERT (QUEM É ELISABETH) --- */
+    .expert-section {
+        /* A imagem agora fica "em cima", sem camadas de cor bloqueando */
+        background-image: url('background-serrilhado.webp') !important;
+        background-size: cover !important;
+        background-position: center !important;
+        background-repeat: no-repeat !important;
+        position: relative;
+        padding: 100px 0;
+        z-index: 1;
+    }
+
+    /* Removendo o filtro escuro que deixava a imagem "por baixo" */
+    .expert-section::before {
+        content: none !important; 
+        display: none !important;
+    }
+
+    /* Ajuste de cores de texto para legibilidade sobre o fundo serrilhado */
+    /* Assumindo que o fundo serrilhado/papel é claro. 
+       Se o fundo for escuro, altere #222 para #fff abaixo */
+    .expert-bio h2 { color: #1a1a1a !important; }
+    .expert-bio p { color: #333 !important; font-weight: 500; }
+    .expert-bio strong { color: #000 !important; }
+    
+    .expert-section .roots-badge {
+        background: rgba(174,144,82,0.15);
+        color: #8e733c;
+        border: 1px solid #ae9052;
+    }
+
+    .expert-section .divisor-papel { display: none; }
+
+    /* --- BLOCO 7: OFERTA (ABAIXO) --- */
+    .offer-section {
+        background: #000000 !important; /* Preto absoluto sem transparência */
+        border-top: none;
+        padding: 100px 0;
+    }
+
+    /* --- OUTROS AJUSTES DE APOIO --- */
+    /* --- BLOCO 1: HERO (ATUALIZADO COM IMAGEM) --- */
+.hero {
+    /* O linear-gradient cria uma camada escura para o texto branco se destacar */
+    background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), 
+                url('background-hero.png');
+    
+    background-size: cover;          /* Faz a imagem cobrir toda a área */
+    background-position: center;     /* Centraliza a imagem */
+    background-repeat: no-repeat;    /* Não repete a imagem */
+    position: relative;
+    padding: 100px 0;                /* Ajuste o preenchimento se necessário */
+}
+
+/* Garante que o fundo da hero não seja sobrescrito por outras regras */
+section.hero {
+    background-color: #000; /* Cor de fundo caso a imagem falhe */
+}
+section:not(.hero):not(.expert-section) { background: #000000; }
+
+    .offer-wrapper {
+        background: #141414;
+        border: 1px solid rgba(174,144,82,0.3);
+        border-radius: 28px;
+        padding: 48px;
+    }
+
+    /* FAQ e outros elementos */
+    details { background: #111; border: 1px solid rgba(255,255,255,0.05); }
+    .depo-section { background: #000; border-top: 1px solid rgba(255,255,255,0.05); }
+
+    /* Responsivo */
+    @media (max-width: 768px) {
+        .expert-section { padding: 60px 0; }
+        .result-list { grid-template-columns: 1fr !important; }
+    }
+
+</style>
+<style>
+    /* 1. CONFIGURAÇÕES GERAIS E TEMA ESCURO */
+    body {
+        background-color: #000000;
+        color: #ffffff;
+        margin: 0;
+        font-family: 'Inter', sans-serif;
+    }
+
+    /* Todas as seções ficam pretas por padrão, exceto as que definiremos abaixo */
+    section {
+        background-color: #000000 !important;
+        padding: 80px 0;
+    }
+
+    /* 2. BLOCO HERO (COM A IMAGEM DE FUNDO) */
+    .hero {
+        /* O linear-gradient cria uma película escura para o texto não sumir na foto */
+        background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                    url('background-hero.png');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        min-height: 80vh;
+        display: flex;
+        align-items: center;
+    }
+
+    /* 3. BLOCO 5: METODOLOGIA (ACIMA DA EXPERT - PRETO PURO) */
+    .metodologia-section {
+        background: #000000 !important;
+    }
+
+    /* 4. BLOCO 6: QUEM É ELISABETH PINHEIRO (ESTILO PAPEL/SERRILHADO) */
+    .expert-section {
+        background-image: url('background-serrilhado.webp') !important;
+        background-size: cover !important;
+        background-position: center !important;
+        background-repeat: no-repeat !important;
+        position: relative;
+        z-index: 1;
+    }
+
+    /* Remove qualquer sombra ou camada escura que estiver por cima da imagem serrilhada */
+    .expert-section::before {
+        content: none !important;
+        display: none !important;
+    }
+
+    /* Ajuste das cores do texto para ler sobre o fundo claro do serrilhado */
+    /* Se o seu serrilhado for escuro, mude #1a1a1a para #ffffff */
+    .expert-bio h2 { color: #1a1a1a !important; }
+    .expert-bio p { color: #333333 !important; }
+    .expert-bio strong { color: #000000 !important; }
+    
+    .expert-section .roots-badge {
+        background: rgba(174, 144, 82, 0.1);
+        color: #8e733c;
+        border: 1px solid #ae9052;
+    }
+
+    .expert-section .signature-roots {
+        background: linear-gradient(135deg, #8e733c 0%, #ae9052 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    /* 5. BLOCO 7: OFERTA (ABAIXO DA EXPERT - PRETO PURO) */
+    .offer-section {
+        background: #000000 !important;
+    }
+
+    /* AJUSTE DOS CARDS PARA APARECEREM NO FUNDO PRETO */
+    .offer-wrapper, .card-perfil, .learning-card, .result-item {
+        background: #111111; /* Cinza quase preto para dar profundidade */
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 20px;
+    }
+
+    /* 6. BOTÃO FLUTUANTE */
+    .floating-btn {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 999;
+        display: none; /* Aparece via JS */
+    }
+    /* --- AJUSTE CORRIGIDO BLOCO 3: QUEM DEVE ESTAR NESSA SALA --- */
+.perfil-section {
+    background: #000000 !important;
+    padding: 100px 0;
+}
+
+
+
+.diagnostico-wrapper {
+    display: flex !important;
+    justify-content: center !important;
+    width: 100%;
+}
+
+.cards-perfil-grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important; /* Lado a lado */
+    gap: 30px !important;
+    max-width: 1000px !important;
+    width: 100% !important;
+}
+
+.card-perfil {
+    background: #111111; /* Cinza bem escuro para destacar do fundo preto */
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 24px;
+    padding: 40px;
+    transition: transform 0.3s ease;
+}
+
+.card-perfil h3 {
+    color: #f0ece4;
+    font-size: 1.2rem;
+    margin: 20px 0;
+}
+
+/* CORREÇÃO DO BUG DO CARD NEGATIVO */
+.card-perfil.negativo {
+    opacity: 1 !important; /* Voltando a opacidade para 100% */
+    border: 1px solid rgba(255, 77, 77, 0.2); /* Borda levemente avermelhada */
+    background: #0d0d0d; /* Um pouco mais escuro que o outro card */
+}
+
+.card-perfil.negativo h3, 
+.card-perfil.negativo li {
+    color: #a0a0a0; /* Texto levemente cinza para dar o efeito de "não recomendado" */
+}
+
+/* Ajuste das listas dentro dos cards */
+.list-roots {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.list-roots li {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 18px;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: #ccc;
+}
+
+.list-roots li strong {
+    color: #fff;
+    display: block;
+    margin-bottom: 4px;
+}
+
+.status-badge {
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 0.7rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* Responsivo para celular */
+@media (max-width: 768px) {
+    .cards-perfil-grid {
+        grid-template-columns: 1fr !important; /* Empilha no celular */
+    }
+}
+/* Estilo base para todos os post-its se ainda não estiver no seu CSS */
+.postit-item {
+    position: absolute;
+    width: 180px; /* Tamanho padrão */
+    padding: 10px 10px 30px 10px;
+    background: #fff;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease;
+}
+
+.postit-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* POSICIONAMENTO DA GALERIA */
+.pi-1 { top: 0; left: 0; transform: rotate(-6deg); z-index: 1; }
+.pi-2 { top: 20px; right: 0; transform: rotate(8deg); z-index: 2; }
+.pi-3 { bottom: 20px; left: 20px; transform: rotate(5deg); z-index: 1; }
+.pi-4 { bottom: 0; right: 10px; transform: rotate(-4deg); z-index: 2; }
+
+/* CONFIGURAÇÃO DA NOVA FOTO CENTRAL (PI-5) */
+.pi-5 {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-2deg); /* Centraliza e rotaciona levemente */
+    width: 200px; /* Um pouco maior que as outras para destacar */
+    z-index: 10; /* Fica por cima de todas */
+    border: 1px solid rgba(0,0,0,0.05);
+}
+
+/* Ajuste para não quebrar no celular */
+@media (max-width: 768px) {
+    .postit-gallery {
+        height: 500px; /* Garante espaço para as fotos espalhadas */
+        position: relative;
+        margin-bottom: 40px;
+    }
+    .pi-5 {
+        width: 160px;
+    }
+}
+/* --- ESTILO DO CARROSSEL DE DEPOIMENTOS --- */
+.depo-section {
+    background: #000 !important;
+    padding: 80px 0;
+    overflow: hidden;
+}
+
+.carousel-viewport {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    padding: 30px 0;
+    /* Adiciona um degradê nas pontas para suavizar a entrada/saída das fotos */
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.carousel-track {
+    display: flex;
+    gap: 20px;
+    width: max-content; /* Garante que a largura se ajuste ao total de imagens */
+    animation: scrollInfinite 45s linear infinite; /* 45 segundos para um ciclo completo */
+}
+
+/* Pausa o carrossel quando o usuário passa o mouse ou toca no celular */
+.carousel-track:hover {
+    animation-play-state: paused;
+}
+
+.carousel-item {
+    width: 260px; /* Largura ideal para prints de celular */
+    flex-shrink: 0;
+}
+
+.carousel-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+    filter: brightness(0.9);
+    transition: all 0.3s ease;
+}
+
+/* Efeito ao passar o mouse */
+.carousel-item img:hover {
+    filter: brightness(1.1);
+    transform: translateY(-10px);
+    border-color: #ae9052;
+}
+
+/* ANIMAÇÃO DO LOOP */
+@keyframes scrollInfinite {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        /* Move exatamente 50% do container (que é o primeiro grupo de 12 fotos) */
+        transform: translateX(-50%);
+    }
+}
+
+/* Ajustes para Celular */
+@media (max-width: 768px) {
+    .carousel-item {
+        width: 200px; /* Menor no celular para caber melhor */
+    }
+    .carousel-track {
+        animation-duration: 30s; /* Um pouco mais rápido em telas pequenas */
+    }
+}
+/* --- ESTILO FAQ UPGRADE --- */
+.faq-section {
+    background: #050505 !important; /* Um preto ainda mais profundo */
+    padding: 100px 0;
+    border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+.faq-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* O Card do FAQ */
+.faq-grid details {
+    background: #111111;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.faq-grid details[open] {
+    border-color: rgba(174, 144, 82, 0.4);
+    background: #141414;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+/* O cabeçalho da pergunta */
+.faq-grid summary {
+    padding: 24px 30px;
+    list-style: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #FFFFFF;
+    outline: none;
+    transition: color 0.3s ease;
+}
+
+.faq-grid summary::-webkit-details-marker {
+    display: none; /* Remove a seta padrão do Chrome */
+}
+
+.faq-grid details:hover summary {
+    color: #ae9052;
+}
+
+/* O Ícone + que vira x */
+.faq-icon {
+    position: relative;
+    width: 20px;
+    height: 20px;
+}
+
+.faq-icon::before, .faq-icon::after {
+    content: '';
+    position: absolute;
+    background: #ae9052;
+    transition: all 0.3s ease;
+}
+
+/* Linha horizontal do + */
+.faq-icon::before {
+    width: 100%;
+    height: 2px;
+    top: 9px;
+    left: 0;
+}
+
+/* Linha vertical do + */
+.faq-icon::after {
+    width: 2px;
+    height: 100%;
+    top: 0;
+    left: 9px;
+}
+
+/* Animação quando abre */
+details[open] .faq-icon::after {
+    transform: rotate(90deg);
+    opacity: 0; /* Some a linha vertical para virar um sinal de - */
+}
+
+details[open] .faq-icon::before {
+    background: #fff; /* Muda cor para branco quando aberto */
+}
+
+/* O conteúdo da resposta */
+.faq-content {
+    padding: 0 30px 30px 30px;
+    animation: fadeIn 0.4s ease-out;
+}
+
+.faq-content p {
+    color: #B0B0B0 !important;
+    font-size: 1rem;
+    line-height: 1.8;
+    margin: 0;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Celular */
+@media (max-width: 768px) {
+    .faq-grid summary {
+        padding: 20px;
+        font-size: 1rem;
+    }
+    .faq-content {
+        padding: 0 20px 20px 20px;
+    }
+}
+/* --- ESTILO METODOLOGIA UPGRADE --- */
+.metodologia-section {
+    background: #000 !important;
+    padding: 120px 0;
+    text-align: center;
+}
+
+.metodologia-header {
+    max-width: 800px;
+    margin: 0 auto 80px;
+}
+
+.big-quote {
+    position: relative;
+    padding-top: 40px;
+}
+
+.quote-icon {
+    width: 60px;
+    height: 60px;
+    opacity: 0.2;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.big-quote h3 {
+    font-size: 2.8rem; /* Título bem grande e imponente */
+    line-height: 1.2;
+    margin-bottom: 20px;
+    color: #fff !important;
+}
+
+.big-quote p {
+    font-size: 1.2rem;
+    color: #B0B0B0 !important;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Grid de Cards */
+.result-grid-premium {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.result-card {
+    background: #0d0d0d;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 50px 30px;
+    border-radius: 24px;
+    transition: all 0.4s ease;
+    text-align: center;
+}
+
+.result-card:hover {
+    transform: translateY(-10px);
+    background: #111;
+    border-color: rgba(174, 144, 82, 0.3);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+.icon-box {
+    width: 70px;
+    height: 70px;
+    background: rgba(174, 144, 82, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 25px;
+    transition: all 0.3s ease;
+}
+
+.result-card:hover .icon-box {
+    background: #ae9052;
+}
+
+.result-card:hover .icon-box svg {
+    stroke: #fff; /* Ícone fica branco no hover */
+}
+
+.result-card h4 {
+    color: #fff !important;
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+}
+
+.result-card p {
+    color: #888 !important; /* Texto de apoio levemente mais escuro */
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.result-card:hover p {
+    color: #B0B0B0 !important; /* Texto clareia no hover */
+}
+
+/* Responsivo para Celular */
+@media (max-width: 992px) {
+    .result-grid-premium {
+        grid-template-columns: 1fr; /* Empilha no celular */
+        max-width: 400px;
+        margin: 0 auto;
+    }
+    .big-quote h3 {
+        font-size: 2rem;
+    }
+}
+/* --- ESTILO OFERTA VIP (UPGRADE TOTAL) --- */
+.offer-section {
+    background: #000 !important;
+    padding: 120px 0;
+    position: relative;
+}
+
+.vip-card-container {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* Brilho atrás do card */
+.card-glow {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%; height: 80%;
+    background: radial-gradient(circle, rgba(174, 144, 82, 0.15) 0%, transparent 70%);
+    z-index: 0;
+}
+
+.offer-card-vip {
+    position: relative;
+    z-index: 1;
+    background: #0a0a0a;
+    border: 1px solid rgba(174, 144, 82, 0.3);
+    border-radius: 40px;
+    overflow: hidden;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.8);
+}
+
+.card-header-vip {
+    padding: 60px 40px 30px;
+    text-align: center;
+}
+
+.badge-row {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.status-pill {
+    background: rgba(24, 201, 90, 0.1);
+    color: #18c95a;
+    padding: 6px 14px;
+    border-radius: 100px;
+    font-size: 0.75rem;
+    font-weight: 800;
+    border: 1px solid rgba(24, 201, 90, 0.2);
+}
+
+.roots-badge-gold {
+    background: rgba(174, 144, 82, 0.1);
+    color: #ae9052;
+    padding: 6px 14px;
+    border-radius: 100px;
+    font-size: 0.75rem;
+    font-weight: 800;
+    border: 1px solid rgba(174, 144, 82, 0.3);
+}
+
+.card-header-vip h2 {
+    font-size: 3rem;
+    margin-bottom: 15px;
+}
+
+.sub-headline {
+    color: #888 !important;
+    font-size: 1.1rem;
+}
+
+/* Divisor Estilo Ticket */
+.ticket-divider {
+    position: relative;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.ticket-divider .line {
+    width: calc(100% - 60px);
+    height: 1px;
+    border-top: 2px dashed rgba(174, 144, 82, 0.2);
+}
+
+.ticket-divider .notch {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background: #000; /* Mesma cor do fundo da página */
+    border-radius: 50%;
+    border: 1px solid rgba(174, 144, 82, 0.3);
+}
+
+.ticket-divider .notch.left { left: -20px; }
+.ticket-divider .notch.right { right: -20px; }
+
+.card-body-vip {
+    padding: 30px 60px 60px;
+}
+
+/* Lista de Benefícios */
+.premium-check-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    list-style: none;
+    margin-bottom: 50px;
+}
+
+.premium-check-list li {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color: #E0E0E0 !important;
+    font-size: 1.05rem;
+}
+
+.icon-check {
+    color: #18c95a;
+    font-weight: 900;
+    font-size: 1.2rem;
+}
+
+/* Quote */
+.impact-quote {
+    text-align: center;
+    padding: 20px;
+    background: rgba(255,255,255,0.03);
+    border-radius: 15px;
+    margin-bottom: 50px;
+}
+
+.impact-quote p {
+    color: #999 !important;
+    font-style: italic;
+}
+
+/* Preço e Botão */
+.price-block-vip {
+    text-align: center;
+}
+
+.price-label {
+    display: block;
+    color: #ae9052;
+    font-weight: 700;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.old-price-vip {
+    color: #666 !important;
+    text-decoration: line-through;
+    font-size: 1.1rem;
+}
+
+.new-price-vip {
+    font-size: 6rem;
+    font-weight: 900;
+    color: #fff !important;
+    margin-bottom: 30px;
+    line-height: 1;
+}
+
+.new-price-vip .currency {
+    font-size: 1.5rem;
+    vertical-align: super;
+    margin-right: 5px;
+}
+
+/* Botão Estilizado */
+.btn-vip {
+    width: 100%;
+    max-width: 550px;
+    background: #ae9052;
+    padding: 15px 30px !important;
+    border-radius: 15px !important;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 30px rgba(174, 144, 82, 0.3);
+}
+
+.btn-vip:hover {
+    transform: scale(1.03);
+    background: #c2a66b;
+    box-shadow: 0 15px 40px rgba(174, 144, 82, 0.5);
+}
+
+.security-foot {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 25px;
+    color: #555 !important;
+    font-size: 0.85rem;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .premium-check-list { grid-template-columns: 1fr; }
+    .card-header-vip h2 { font-size: 2.2rem; }
+    .new-price-vip { font-size: 4rem; }
+    .card-body-vip { padding: 20px 30px 40px; }
+    .ticket-divider .line { width: calc(100% - 40px); }
+}
+/* --- BLOCO PONTE ULTRA-PREMIUM --- */
+.ponte-premium {
+    background: #000 !important;
+    padding: 120px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Luz suave de fundo para profundidade */
+.ponte-premium::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(174, 144, 82, 0.08) 0%, transparent 70%);
+    z-index: 0;
+}
+
+.ponte-container {
+    position: relative;
+    z-index: 1;
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* Linha decorativa elegante */
+.elegant-divider {
+    width: 1px;
+    height: 60px;
+    background: linear-gradient(to bottom, transparent, #ae9052, transparent);
+    margin: 0 auto 40px;
+}
+
+.ponte-premium .eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-size: 0.8rem;
+    color: #ae9052;
+    font-weight: 700;
+    margin-bottom: 20px;
+    display: block;
+}
+
+.ponte-premium h2 {
+    font-family: 'Blinker', sans-serif;
+    font-size: 3.2rem;
+    line-height: 1.1;
+    color: #fff;
+    margin-bottom: 50px;
+    font-weight: 400;
+}
+
+.ponte-premium h2 span {
+    font-weight: 700;
+    display: block;
+}
+
+.ponte-grid {
+    display: grid;
+    grid-template-columns: 1fr 1px 1fr;
+    gap: 40px;
+    align-items: center;
+    text-align: left;
+}
+
+.ponte-col p {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: #a0a0a0;
+    margin: 0;
+}
+
+.ponte-col strong {
+    color: #fff;
+    font-weight: 600;
+}
+
+.middle-line {
+    background: rgba(174, 144, 82, 0.2);
+    height: 100%;
+    width: 1px;
+}
+
+.ponte-footer-text {
+    margin-top: 60px;
+    font-style: italic;
+    font-size: 1.8rem;
+    color: #f0ece4;
+    opacity: 0.9;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+    .ponte-premium { padding: 80px 20px; }
+    .ponte-premium h2 { font-size: 2.2rem; }
+    .ponte-grid { 
+        grid-template-columns: 1fr; 
+        text-align: center;
+        gap: 30px;
+    }
+    .middle-line { display: none; }
+}
+/* --- BLOCO 3: DIAGNÓSTICO (QUEM DEVE ESTAR NESSA SALA) --- */
+.perfil-section {
+    background: #000000 !important;
+    padding: 120px 0;
+    position: relative;
+}
+
+/* Título e Subtítulo */
+.perfil-intro {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 70px;
+}
+
+.perfil-intro h2 {
+    font-size: 2.8rem;
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+/* A Grade de Cards */
+.diagnostico-grid-premium {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.diag-card {
+    background: linear-gradient(145deg, #0a0a0a 0%, #111111 100%);
+    border: 1px solid rgba(174, 144, 82, 0.15);
+    border-radius: 20px;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+}
+
+.diag-card:hover {
+    border-color: #ae9052;
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+}
+
+/* Ícone de Check Premium */
+.diag-check {
+    width: 32px;
+    height: 32px;
+    background: #ae9052;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000;
+    font-weight: 900;
+    font-size: 1rem;
+    box-shadow: 0 0 15px rgba(174, 144, 82, 0.3);
+}
+
+.diag-card h3 {
+    font-size: 1.4rem;
+    color: #ae9052;
+    margin: 0;
+    font-weight: 700;
+}
+
+.diag-card p {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #ccc !important;
+    margin: 0;
+}
+
+/* Seção de Exclusão (Para quem NÃO é) - Estilo Minimalista */
+.not-for-you {
+    margin-top: 80px;
+    text-align: center;
+    padding: 40px;
+    border-top: 1px dashed rgba(255, 255, 255, 0.1);
+}
+
+.not-for-you h4 {
+    color: #ff4d4d;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.8rem;
+    margin-bottom: 25px;
+}
+
+.not-list {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    opacity: 0.6;
+}
+
+.not-item {
+    font-size: 0.9rem;
+    color: #888;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Responsividade */
+@media (max-width: 850px) {
+    .diagnostico-grid-premium { grid-template-columns: 1fr; }
+    .perfil-intro h2 { font-size: 2.2rem; }
+    .not-list { flex-direction: column; gap: 15px; align-items: center; }
+}
+/* --- ESTILO SEÇÃO APRENDER V2 --- */
+.learning-section {
+    background: #000 !important;
+    padding: 120px 0;
+    border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+.learning-intro {
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto 60px;
+}
+
+.live-badge {
+    background: rgba(174, 144, 82, 0.1);
+    color: #ae9052;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    display: inline-block;
+    margin-bottom: 20px;
+    border: 1px solid rgba(174, 144, 82, 0.3);
+}
+
+.learning-grid-v2 {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 60px;
+    align-items: start;
+}
+
+.learning-text h3 {
+    font-size: 2rem;
+    line-height: 1.3;
+    margin-bottom: 25px;
+    color: #fff;
+}
+
+.learning-description {
+    color: #a0a0a0;
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-bottom: 40px;
+}
+
+/* Lista de Tópicos Elegante */
+.roots-topics-list {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: 20px;
+}
+
+.topic-item {
+    display: flex;
+    gap: 15px;
+    align-items: flex-start;
+    padding: 15px;
+    background: rgba(255,255,255,0.02);
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.05);
+    transition: 0.3s;
+}
+
+.topic-item:hover {
+    background: rgba(174, 144, 82, 0.05);
+    border-color: rgba(174, 144, 82, 0.2);
+}
+
+.topic-icon {
+    color: #ae9052;
+    font-weight: bold;
+    font-size: 1.2rem;
+    line-height: 1;
+}
+
+.topic-item span {
+    color: #e0e0e0;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+/* Coluna do Cronograma */
+.schedule-card {
+    background: #0a0a0a;
+    border: 1px solid rgba(174, 144, 82, 0.2);
+    border-radius: 24px;
+    padding: 40px;
+    position: sticky;
+    top: 40px;
+}
+
+.schedule-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.date-circle {
+    width: 80px;
+    height: 80px;
+    border: 2px solid #ae9052;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 15px;
+}
+
+.date-circle .day { font-size: 1.5rem; font-weight: 800; color: #fff; line-height: 1; }
+.date-circle .month { font-size: 0.7rem; color: #ae9052; text-transform: uppercase; font-weight: 700; }
+
+.schedule-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.schedule-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.schedule-time { color: #ae9052; font-weight: 700; font-family: 'Blinker'; }
+.schedule-event { color: #fff; font-weight: 500; }
+
+.schedule-disclaimer {
+    font-size: 0.75rem;
+    color: #666;
+    margin-top: 25px;
+    line-height: 1.5;
+    font-style: italic;
+}
+
+@media (max-width: 992px) {
+    .learning-grid-v2 { grid-template-columns: 1fr; gap: 40px; }
+    .schedule-card { position: static; }
+}
+/* --- ESTILO SEÇÃO INCLUSO + PREÇO --- */
+.incluso-section {
+    background: #000 !important;
+    padding: 100px 0;
+    border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+.incluso-grid {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 60px;
+    align-items: center;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* Container da Imagem do Ingresso */
+.ticket-container {
+    position: relative;
+    text-align: center;
+}
+
+.ticket-img {
+    width: 100%;
+    max-width: 450px;
+    filter: drop-shadow(0 20px 50px rgba(174, 144, 82, 0.2));
+    transition: transform 0.3s ease;
+}
+
+.ticket-container:hover .ticket-img {
+    transform: rotate(-2deg) scale(1.02);
+}
+
+/* Lado do Conteúdo e Preço */
+.offer-details {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(174, 144, 82, 0.2);
+    border-radius: 32px;
+    padding: 50px;
+    position: relative;
+    overflow: hidden;
+}
+
+.offer-details::before {
+    content: '';
+    position: absolute;
+    top: -50%; right: -50%;
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(174, 144, 82, 0.1) 0%, transparent 70%);
+}
+
+.offer-details h2 {
+    font-size: 1.8rem;
+    color: #fff;
+    margin-bottom: 30px;
+    line-height: 1.2;
+}
+
+.incluso-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 40px;
+}
+
+.incluso-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #ccc;
+    font-size: 1rem;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.incluso-item:last-child { border-bottom: none; }
+
+.check-gold { color: #ae9052; font-weight: bold; }
+
+/* Bloco de Preço */
+.price-block-v3 {
+    background: rgba(174, 144, 82, 0.05);
+    border-radius: 20px;
+    padding: 30px;
+    text-align: center;
+}
+
+.lote-badge {
+    background: #ae9052;
+    color: #000;
+    font-size: 0.7rem;
+    font-weight: 900;
+    padding: 4px 12px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    display: inline-block;
+    margin-bottom: 15px;
+}
+
+.old-price {
+    display: block;
+    color: #666;
+    text-decoration: line-through;
+    font-size: 1rem;
+    margin-bottom: 5px;
+}
+
+.new-price {
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: #fff;
+    display: block;
+    line-height: 1;
+    margin-bottom: 10px;
+}
+
+.new-price small { font-size: 1.2rem; vertical-align: middle; margin-right: 4px; }
+
+.scarcity-note {
+    font-size: 0.8rem;
+    color: #ae9052;
+    margin-top: 15px;
+    display: block;
+    font-weight: 600;
+}
+
+@media (max-width: 992px) {
+    .incluso-grid { grid-template-columns: 1fr; gap: 40px; }
+    .offer-details { padding: 30px; }
+    .new-price { font-size: 2.8rem; }
+}
+/* --- ESTILO SEÇÃO INCLUSO + PREÇO --- */
+.incluso-section {
+    background: #000 !important;
+    padding: 100px 0;
+    border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+.incluso-grid {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 60px;
+    align-items: center;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* Container da Imagem do Ingresso */
+.ticket-container {
+    position: relative;
+    text-align: center;
+}
+
+.ticket-img {
+    width: 100%;
+    max-width: 450px;
+    filter: drop-shadow(0 20px 50px rgba(174, 144, 82, 0.2));
+    transition: transform 0.3s ease;
+}
+
+.ticket-container:hover .ticket-img {
+    transform: rotate(-2deg) scale(1.02);
+}
+
+/* Lado do Conteúdo e Preço */
+.offer-details {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(174, 144, 82, 0.2);
+    border-radius: 32px;
+    padding: 50px;
+    position: relative;
+    overflow: hidden;
+}
+
+.offer-details::before {
+    content: '';
+    position: absolute;
+    top: -50%; right: -50%;
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(174, 144, 82, 0.1) 0%, transparent 70%);
+}
+
+.offer-details h2 {
+    font-size: 1.8rem;
+    color: #fff;
+    margin-bottom: 30px;
+    line-height: 1.2;
+}
+
+.incluso-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 40px;
+}
+
+.incluso-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #ccc;
+    font-size: 1rem;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.ponte-premium {
+    position: relative;
+    background-color: #000 !important;
+    padding: 160px 0;
+    overflow: hidden;
+    z-index: 1;
+	
+background-image: 
+    linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+    linear-gradient(to bottom,  #000 0%, transparent 45%, transparent 55%, #000 100%),
+    linear-gradient(to right,   #000 0%, transparent 35%, transparent 65%, #000 100%),
+    url('background-fisio-2.png') !important;
+	
+    background-repeat: no-repeat !important;
+    background-position: center center !important;
+    background-size: cover !important;
+    background-attachment: scroll !important;
+}
+
+.ponte-container {
+    position: relative;
+    z-index: 10;
+}
+
+@media (max-width: 768px) {
+    .ponte-premium {
+        background-size: contain !important;
+        padding: 80px 20px;
+    }
+}
+.incluso-item:last-child { border-bottom: none; }
+
+.check-gold { color: #ae9052; font-weight: bold; }
+
+/* Bloco de Preço */
+.price-block-v3 {
+    background: rgba(174, 144, 82, 0.05);
+    border-radius: 20px;
+    padding: 30px;
+    text-align: center;
+}
+
+.lote-badge {
+    background: #ae9052;
+    color: #000;
+    font-size: 0.7rem;
+    font-weight: 900;
+    padding: 4px 12px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    display: inline-block;
+    margin-bottom: 15px;
+}
+
+.old-price {
+    display: block;
+    color: #666;
+    text-decoration: line-through;
+    font-size: 1rem;
+    margin-bottom: 5px;
+}
+
+.new-price {
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: #fff;
+    display: block;
+    line-height: 1;
+    margin-bottom: 10px;
+}
+
+.new-price small { font-size: 1.2rem; vertical-align: middle; margin-right: 4px; }
+
+.scarcity-note {
+    font-size: 0.8rem;
+    color: #ae9052;
+    margin-top: 15px;
+    display: block;
+    font-weight: 600;
+}
+
+@media (max-width: 992px) {
+    .incluso-grid { grid-template-columns: 1fr; gap: 40px; }
+    .offer-details { padding: 30px; }
+    .new-price { font-size: 2.8rem; }
+}
+/* --- BLOCO POSICIONAMENTO INVESTIMENTO --- */
+.investment-logic-section {
+    background: #000 !important;
+    padding: 120px 0;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    position: relative;
+    text-align: center;
+}
+
+.logic-container {
+    max-width: 850px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+/* Um brilho muito sutil atrás do texto */
+.investment-logic-section::after {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 70%; height: 50%;
+    background: radial-gradient(circle, rgba(174, 144, 82, 0.05) 0%, transparent 70%);
+    z-index: 0;
+}
+
+.investment-logic-section h2 {
+    font-size: 2.5rem;
+    line-height: 1.2;
+    margin-bottom: 40px;
+    color: #fff;
+}
+
+.logic-text-box {
+    margin-bottom: 50px;
+}
+
+.logic-text-box p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: #b0b0b0 !important;
+    margin-bottom: 25px;
+}
+
+/* Destaque para a frase central */
+.highlight-logic {
+    display: block;
+    font-size: 1.4rem;
+    color: #f0ece4;
+    font-weight: 600;
+    padding: 20px;
+    border-left: 2px solid #ae9052;
+    background: rgba(174, 144, 82, 0.03);
+    margin: 40px 0;
+    font-style: italic;
+}
+
+.logic-footer {
+    margin-top: 50px;
+}
+
+@media (max-width: 768px) {
+    .investment-logic-section { padding: 80px 20px; }
+    .investment-logic-section h2 { font-size: 1.8rem; }
+    .logic-text-box p { font-size: 1.1rem; }
+    .highlight-logic { font-size: 1.2rem; }
+}
+/* --- BLOCO MANIFESTO E POSICIONAMENTO --- */
+.manifesto-section {
+    background: #000 !important;
+    padding: 140px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Efeito de luz que segue o scroll ou pulsa */
+.glow-bg {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 800px; height: 800px;
+    background: radial-gradient(circle, rgba(174, 144, 82, 0.05) 0%, transparent 70%);
+    z-index: 0;
+    animation: pulseGlow 8s infinite alternate;
+}
+
+@keyframes pulseGlow {
+    0% { opacity: 0.3; transform: translate(-50%, -50%) scale(1); }
+    100% { opacity: 0.7; transform: translate(-50%, -50%) scale(1.2); }
+}
+
+.manifesto-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.manifesto-content h2 {
+    font-size: 3.5rem;
+    line-height: 1.1;
+    margin-bottom: 40px;
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+.manifesto-text p {
+    font-size: 1.3rem;
+    line-height: 1.8;
+    color: #a0a0a0 !important;
+    margin-bottom: 30px;
+}
+
+.manifesto-highlight {
+    font-size: 1.8rem;
+    color: #fff;
+    font-weight: 600;
+    margin: 60px 0;
+    padding: 40px;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 30px;
+    border: 1px solid rgba(174, 144, 82, 0.1);
+    box-shadow: inset 0 0 20px rgba(174, 144, 82, 0.05);
+    position: relative;
+}
+
+/* --- BLOCO GARANTIA PREMIUM (SHIELD EFFECT) --- */
+.guarantee-premium {
+    background: #000 !important;
+    padding: 100px 0;
+}
+
+.guarantee-card-v4 {
+    max-width: 800px;
+    margin: 0 auto;
+    background: linear-gradient(145deg, #0f0f0f 0%, #050505 100%);
+    border: 1px solid rgba(174, 144, 82, 0.3);
+    border-radius: 40px;
+    padding: 60px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 40px 80px rgba(0,0,0,0.6);
+}
+
+/* Efeito de brilho "passante" (Shine Effect) */
+.guarantee-card-v4::after {
+    content: '';
+    position: absolute;
+    top: -50%; left: -50%;
+    width: 200%; height: 200%;
+    background: linear-gradient(45deg, transparent 45%, rgba(174, 144, 82, 0.1) 50%, transparent 55%);
+    animation: shine 6s infinite;
+}
+
+@keyframes shine {
+    0% { transform: translateX(-100%) translateY(-100%); }
+    100% { transform: translateX(100%) translateY(100%); }
+}
+
+.seal-icon {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 30px;
+    filter: drop-shadow(0 0 15px rgba(174, 144, 82, 0.5));
+    animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.guarantee-card-v4 h3 {
+    font-size: 2.5rem;
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.guarantee-card-v4 p {
+    color: #ccc !important;
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+.risk-label {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 10px 25px;
+    background: rgba(174, 144, 82, 0.1);
+    border: 1px solid #ae9052;
+    border-radius: 100px;
+    color: #ae9052;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+@media (max-width: 768px) {
+    .manifesto-content h2 { font-size: 2.2rem; }
+    .manifesto-highlight { font-size: 1.3rem; padding: 25px; }
+    .guarantee-card-v4 { padding: 40px 20px; margin: 0 20px; }
+}
+/* --- ESTILOS: MANIFESTO & GARANTIA ROOTS --- */
+.posicionamento-roots {
+    background: #000 !important;
+    padding: 120px 0;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+}
+
+/* Efeito de Luz de Fundo (Aura Dourada) */
+.aura-bg {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(174, 144, 82, 0.08) 0%, transparent 70%);
+    z-index: 0;
+    pointer-events: none;
+}
+
+.posicionamento-roots .container {
+    position: relative; z-index: 1;
+    max-width: 850px;
+}
+
+.posicionamento-roots h2 {
+    font-size: 2.8rem;
+    line-height: 1.2;
+    color: #fff;
+    margin-bottom: 40px;
+}
+
+.manifesto-text p {
+    font-size: 1.25rem;
+    line-height: 1.8;
+    color: #b0b0b0 !important;
+    margin-bottom: 30px;
+}
+
+/* Box de Destaque (Cobrar mais...) */
+.manifesto-quote {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(174, 144, 82, 0.2);
+    border-radius: 20px;
+    padding: 35px;
+    margin: 45px 0;
+    font-size: 1.4rem;
+    color: #fff;
+    font-weight: 600;
+    font-style: italic;
+    box-shadow: inset 0 0 30px rgba(174, 144, 82, 0.05);
+}
+
+/* --- GARANTIA DESIGN --- */
+.garantia-roots {
+    background: #000 !important;
+    padding: 100px 0;
+}
+
+.garantia-card-v5 {
+    max-width: 750px;
+    margin: 0 auto;
+    background: linear-gradient(145deg, #0d0d0d 0%, #050505 100%);
+    border: 1px solid rgba(174, 144, 82, 0.3);
+    border-radius: 40px;
+    padding: 60px 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Efeito de Reflexo (Shine) que passa no card */
+.garantia-card-v5::before {
+    content: '';
+    position: absolute;
+    top: -100%; left: -100%;
+    width: 300%; height: 300%;
+    background: linear-gradient(45deg, transparent 45%, rgba(174, 144, 82, 0.08) 50%, transparent 55%);
+    animation: shineEffect 8s infinite linear;
+}
+
+@keyframes shineEffect {
+    0% { transform: translate(0,0); }
+    100% { transform: translate(30%, 30%); }
+}
+
+.seal-img {
+    width: 120px;
+    height: 120px;
+    margin-bottom: 25px;
+    filter: drop-shadow(0 0 15px rgba(174, 144, 82, 0.4));
+}
+
+.garantia-card-v5 h3 {
+    font-size: 2.2rem;
+    color: #fff;
+    margin-bottom: 25px;
+}
+
+.garantia-card-v5 p {
+    color: #ccc !important;
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+.risk-stamp {
+    display: inline-block;
+    padding: 10px 30px;
+    background: rgba(174, 144, 82, 0.1);
+    border: 1px solid #ae9052;
+    border-radius: 100px;
+    color: #ae9052;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-top: 30px;
+}
+
+@media (max-width: 768px) {
+    .posicionamento-roots h2 { font-size: 2rem; }
+    .manifesto-quote { font-size: 1.1rem; padding: 25px; }
+    .garantia-card-v5 { padding: 40px 20px; }
+}
+/* --- SEÇÃO INCLUSO + PREÇO V4 (ULTRA PREMIUM) --- */
+.incluso-section {
+    background: #000 !important;
+    padding: 140px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Brilho de fundo atrás do ingresso */
+.ticket-glow-bg {
+    position: absolute;
+    top: 50%; left: 20%;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(174, 144, 82, 0.15) 0%, transparent 70%);
+    filter: blur(60px);
+    z-index: 0;
+}
+
+.incluso-grid-v4 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+/* Efeito no Ingresso */
+.ticket-visual-wrapper {
+    position: relative;
+    perspective: 1000px; /* Para efeito 3D */
+}
+
+.ticket-main-img {
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 30px 60px rgba(0,0,0,0.8));
+    animation: floatTicket 6s ease-in-out infinite;
+    transform-style: preserve-3d;
+}
+
+@keyframes floatTicket {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(-1deg); }
+}
+
+/* Card de Oferta Estilo Vidro */
+.offer-glass-card {
+    background: rgba(10, 10, 10, 0.8);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(174, 144, 82, 0.2);
+    border-radius: 40px;
+    padding: 60px;
+    box-shadow: 0 40px 100px rgba(0,0,0,0.5);
+}
+
+.incluso-list-premium {
+    list-style: none;
+    padding: 0;
+    margin: 30px 0 50px;
+}
+
+.incluso-item-v4 {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    color: #e0e0e0;
+    font-size: 1.05rem;
+    margin-bottom: 20px;
+}
+
+.check-icon-v4 {
+    color: #ae9052;
+    background: rgba(174, 144, 82, 0.1);
+    width: 24px; height: 24px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.8rem; font-weight: bold;
+    flex-shrink: 0; margin-top: 2px;
+}
+
+/* Bloco de Preço Detalhado */
+.price-tag-container {
+    text-align: center;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    padding-top: 40px;
+}
+
+.lote-label-v4 {
+    display: inline-block;
+    color: #ae9052;
+    font-weight: 800;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.price-main-v4 {
+    font-size: 5rem;
+    font-weight: 900;
+    color: #fff;
+    line-height: 1;
+    margin: 10px 0;
+    letter-spacing: -2px;
+}
+
+.price-main-v4 small {
+    font-size: 1.5rem;
+    vertical-align: super;
+    margin-right: 5px;
+}
+
+.old-price-v4 {
+    color: #666;
+    text-decoration: line-through;
+    font-size: 1.1rem;
+}
+
+@media (max-width: 992px) {
+    .incluso-grid-v4 { grid-template-columns: 1fr; gap: 40px; text-align: center; }
+    .offer-glass-card { padding: 40px 20px; }
+    .incluso-item-v4 { text-align: left; }
+    .price-main-v4 { font-size: 4rem; }
+}
+/* --- SEÇÃO INCLUSO ULTRA-COMPLETA --- */
+.incluso-section {
+    background: #000 !important;
+    padding: 120px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+/* 1. Fundo com Grade Tecnológica Sutil */
+.incluso-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(rgba(174, 144, 82, 0.03) 1px, transparent 1px), 
+                      linear-gradient(90deg, rgba(174, 144, 82, 0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+    z-index: 0;
+}
+
+/* 2. Grandes textos decorativos ao fundo */
+.bg-text-watermark {
+    position: absolute;
+    font-size: 15vw;
+    font-weight: 900;
+    color: rgba(255, 255, 255, 0.02);
+    white-space: nowrap;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+    pointer-events: none;
+    text-transform: uppercase;
+}
+
+.incluso-grid-v5 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+
+/* 3. Card do Ingresso com "Arsenal" */
+.ticket-showcase {
+    position: relative;
+    padding: 40px;
+    background: radial-gradient(circle at center, rgba(174, 144, 82, 0.1) 0%, transparent 70%);
+}
+
+.floating-element {
+    position: absolute;
+    background: rgba(174, 144, 82, 0.1);
+    backdrop-filter: blur(5px);
+    padding: 10px 20px;
+    border-radius: 12px;
+    border: 1px solid rgba(174, 144, 82, 0.3);
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #ae9052;
+    z-index: 3;
+}
+
+/* Posicionamento dos elementos flutuantes ao redor do ingresso */
+.f-1 { top: 10%; left: -5%; animation: float 4s infinite ease-in-out; }
+.f-2 { bottom: 20%; right: -5%; animation: float 5s infinite ease-in-out reverse; }
+
+/* 4. Barra de Confiança (Preenche o rodapé da seção) */
+.trust-badges-row {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    margin-top: 100px;
+    padding-top: 60px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    position: relative;
+    z-index: 2;
+}
+
+.badge-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    opacity: 0.6;
+    transition: 0.3s;
+}
+
+.badge-item:hover { opacity: 1; }
+
+.badge-item svg { width: 30px; height: 30px; fill: #ae9052; }
+
+.badge-text b { display: block; color: #fff; font-size: 0.9rem; }
+.badge-text span { font-size: 0.75rem; color: #888; }
+
+@media (max-width: 992px) {
+    .incluso-grid-v5 { grid-template-columns: 1fr; }
+    .trust-badges-row { flex-direction: column; gap: 30px; align-items: center; text-align: center; }
+    .bg-text-watermark { display: none; }
+}
+/* Estilo do Modal de Zoom */
+.zoom-modal {
+    display: none; /* Escondido por padrão */
+    position: fixed;
+    z-index: 99999; /* Fica acima de tudo */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.95); /* Fundo preto bem escuro */
+    justify-content: center;
+    align-items: center;
+    cursor: zoom-out;
+    padding: 20px;
+}
+
+.zoom-content {
+    margin: auto;
+    display: block;
+    max-width: 90%;
+    max-height: 90vh;
+    border-radius: 10px;
+    border: 2px solid #ae9052;
+    box-shadow: 0 0 30px rgba(174, 144, 82, 0.4);
+    animation: zoomIn 0.3s ease;
+}
+
+.zoom-close {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.zoom-close:hover {
+    color: #ae9052;
+}
+
+@keyframes zoomIn {
+    from { transform: scale(0.7); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+/* Cursor de lupa ao passar o mouse nas fotos do carrossel */
+.carousel-item img {
+    cursor: zoom-in;
+}
+/* --- COMPONENTE DE ESCASSEZ (BARRINHA) --- */
+/* --- COMPONENTE DE ESCASSEZ ALINHADO À ESQUERDA --- */
+.scarcity-wrapper {
+    margin-top: 25px;
+    max-width: 450px;
+    margin-left: 0;      /* Remove o auto que centralizava */
+    margin-right: auto;
+    text-align: left;    /* Alinha o texto à esquerda */
+}
+
+.scarcity-text {
+    font-size: 0.8rem;
+    color: #ae9052; 
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: block;
+    margin-bottom: 8px;
+    text-align: left;    /* Garante o alinhamento do texto */
+    animation: blinkText 2s infinite;
+}
+
+/* O restante (bar-container, fill, animations) pode continuar igual */
+
+.scarcity-bar-container {
+    width: 100%;
+    height: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50px;
+    border: 1px solid rgba(174, 144, 82, 0.3);
+    overflow: hidden;
+    position: relative;
+}
+
+.scarcity-bar-fill {
+    height: 100%;
+    width: 87%; /* Simula que 87% das vagas já foram */
+    background: linear-gradient(90deg, #8e733c 0%, #ae9052 100%);
+    border-radius: 50px;
+    box-shadow: 0 0 15px rgba(174, 144, 82, 0.5);
+    
+    /* Animação: a barra enche quando a página carrega e depois pulsa */
+    animation: fillBar 3s ease-out forwards, pulseBar 2s infinite alternate;
+}
+
+/* ANIMAÇÕES */
+@keyframes fillBar {
+    from { width: 0%; }
+    to { width: 87%; }
+}
+
+@keyframes pulseBar {
+    from { opacity: 0.8; box-shadow: 0 0 5px rgba(174, 144, 82, 0.4); }
+    to { opacity: 1; box-shadow: 0 0 15px rgba(174, 144, 82, 0.8); }
+}
+
+@keyframes blinkText {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+/* --- AJUSTES DE LARGURA E ELEMENTOS DO HERO --- */
+
+/* Faz a sessão hero aceitar um container mais largo */
+.container-hero {
+    max-width: 1300px !important; /* Aumentado de 1100px para 1300px */
+    width: 95% !important;
+    margin: 0 auto;
+}
+
+/* Container da logo e do selo exclusivo */
+.hero-nav {
+    display: flex;
+    justify-content: space-between; /* Logo na esquerda, Selo na direita */
+    align-items: center;
+    width: 100%;
+    margin-bottom: 40px; /* Espaço antes de começar o título */
+}
+
+.hero-logo {
+    height: 95px; /* Ajuste o tamanho conforme sua logo */
+    width: auto;
+}
+
+.hero-badge-sala {
+    height: 60px; /* Ajuste o tamanho conforme o selo */
+    width: auto;
+}
+.hero-badge-sala {
+    /* Se o fundo da imagem for PRETO e você quer que ele suma: */
+    mix-blend-mode: screen; 
+
+    /* Se o fundo da imagem for BRANCO e você quer que ele suma: */
+    /* mix-blend-mode: multiply; */
+    
+    height: 60px; /* Ajuste o tamanho conforme necessário */
+    width: auto;
+}
+
+/* Ajuste para o Grid do Hero não quebrar com a nova largura */
+.hero-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr; /* Ajuste leve na proporção */
+    gap: 40px;
+    align-items: center;
+}
+
+/* Responsivo para Celular */
+@media (max-width: 768px) {
+    .hero-nav {
+        flex-direction: column; /* Empilha logo e selo no celular */
+        gap: 20px;
+        margin-bottom: 30px;
+    }
+    
+    .hero-logo { height: 55px; }
+    .hero-badge-sala { height: 50px; }
+}
+.hero-badge-sala {
+    /* Cria um contorno branco nítido de 2px */
+    filter: drop-shadow(1px 1px 0px #ffffff) 
+            drop-shadow(-1px -1px 0px #ffffff) 
+            drop-shadow(1px -1px 0px #ffffff) 
+            drop-shadow(-1px 1px 0px #ffffff);
+    
+    height: 30px; /* Ajuste conforme necessário */
+    width: auto;
+} 
+/* Ajuste no final da Hero */
+.hero {
+    padding-bottom: 20px !important; /* Reduzido de 100px para 20px */
+}
+
+/* Ajuste no início da Ponte Premium */
+.ponte-premium {
+    padding-top: 50px !important; /* Reduzido de 160px para 50px */
+    padding-bottom: 80px !important;
+    background-color: #000 !important;
+}
+/* --- PONTE PREMIUM: FOCO EM LEGIBILIDADE --- */
+.ponte-premium {
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    /* Camada dupla de preto: uma geral (0.8) e degradês para as bordas sumirem */
+    background-image: 
+        linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), 
+        linear-gradient(to bottom, #000 0%, transparent 20%, transparent 80%, #000 100%),
+        url('background-fisio-2.png') !important;
+    background-repeat: no-repeat !important;
+    background-position: center center !important;
+    background-size: cover !important;
+    background-attachment: fixed !important; /* Efeito Parallax */
+}
+
+/* Forçando cor branca e sombra nos textos */
+.ponte-premium h2 {
+    color: #ffffff !important;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.9); /* Sombra para destacar do fundo */
+    font-size: 3rem;
+    margin-bottom: 30px;
+}
+
+.ponte-col p {
+    color: #ffffff !important; /* Letras Brancas */
+    text-shadow: 0 1px 5px rgba(0,0,0,0.8);
+    font-size: 1.25rem;
+    line-height: 1.8;
+    opacity: 1 !important; /* Garante que não esteja transparente */
+}
+
+.ponte-footer-text {
+    color: #ffffff !important;
+    text-shadow: 0 1px 5px rgba(0,0,0,0.8);
+    opacity: 0.9;
+    font-size: 1.8rem;
+    margin-top: 40px;
+}
+
+/* Destaque para o que for importante dentro do parágrafo */
+.ponte-col strong {
+    color: #ae9052 !important; /* Dourado Elisabeth */
+    font-weight: 700;
+}
+
+/* Divisor elegante central */
+.middle-line {
+    background: linear-gradient(to bottom, transparent, #ae9052, transparent);
+    width: 1px;
+    height: 150px;
+}
+.ponte-premium {
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    /* Reduzi o padding para a sessão ficar mais compacta */
+    padding: 30px 0 50px 0 !important; 
+    
+    background-image: 
+        linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), /* Escureci um pouco mais para ler melhor */
+        linear-gradient(to bottom, #000 0%, transparent 20%, transparent 80%, #000 100%),
+        url('background-fisio-2.png') !important;
+    
+    background-repeat: no-repeat !important;
+    background-position: center center !important;
+    /* '100% auto' diminui o zoom comparado ao 'cover' */
+    background-size: 100% auto !important; 
+    background-attachment: fixed !important;
+}
+
+/* Garante que os textos brancos fiquem nítidos no fundo menor */
+.ponte-premium h2 {
+    color: #ffffff !important;
+    font-size: 2.5rem !important; /* Reduzi um pouco o título para caber na sessão menor */
+    text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+}
+
+.ponte-col p {
+    color: #ffffff !important;
+    font-size: 1.15rem !important;
+    text-shadow: 0 1px 5px rgba(0,0,0,0.8);
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- ADICIONE ESTE BLOCO LOGO APÓS ABERTURA DA TAG BODY -->
+<div id="zoom-modal" class="zoom-modal">
+    <span class="zoom-close">&times;</span>
+    <img class="zoom-content" id="img-zoom-target">
+</div>
+    <!-- BOTÃO FLUTUANTE -->
+    <div class="floating-btn" id="floatBtn">
+        <a href="https://pay.hotmart.com/X105400053A?checkoutMode=10" class="btn-cta" style="padding: 12px 25px; font-size: 0.9rem;">QUERO MEU INGRESSO</a>
+    </div>
+<!-- BLOCO 1: HERO -->
+<section class="hero">
+    <!-- Adicionamos uma classe 'container-hero' para controlar a largura separadamente -->
+    <div class="container container-hero"> 
+        
+        <!-- NOVO: Linha do topo com Logo e Selo -->
+        <div class="hero-nav">
+            <img src="logotipo.png" alt="Logo Elisabeth Pinheiro" class="hero-logo">
+            <img src="sala-exclusivo.png" alt="Sala Exclusiva" class="hero-badge-sala">
+        </div>
+
+        <div class="hero-grid">
+                <div class="hero-text">
+                    <!-- <h3>Evento 100% ao vivo no Google Meet | 23 de Maio (Sábado) | das 9h às 17h</h3>-->
+                    <h1>Em 1 dia aprenda a<span class="headline-gradient"> gerar resultados e cobrar 3x mais, </span>usando só o chão e uma faixa elástica</h1>
+                    <p>Domine o raciocínio clínico que nunca te ensinaram na faculdade para avaliar com clareza, tratar com estratégia e construir atendimentos que geram resultado e valorização profissional.</p>
+                    
+                    <div class="hero-info">
+                        <div class="hero-info-item">
+                            <svg viewBox="0 0 24 24" fill="#ae9052" width="24"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zM9 14H7v-2h2v2zm4 0h-2v-2h2v2zm4 0h-2v-2h2v2zm-8 4H7v-2h2v2zm4 0h-2v-2h2v2zm4 0h-2v-2h2v2z"/></svg>
+                            <span>23 de Maio (Sábado)</span>
+                        </div>
+                        <div class="hero-info-item">
+                            <svg viewBox="0 0 24 24" fill="#ae9052" width="24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+                            <span>Das 09h às 17h – 100% Online e Ao Vivo</span>
+                        </div>
+                       
+                    </div>
+
+                    <a href="#oferta" class="btn-cta">
+                        <div class="btn-text-container">
+                            <span class="btn-main-text">Garanta Sua Vaga</span>
+                           
+                        </div>
+                        <div class="btn-icon-box">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </div>
+                    </a>
+			<div class="scarcity-wrapper">
+    <span class="scarcity-text">⚠️ Vagas limitadas · Sem garantia de nova turma</span>
+    <div class="scarcity-bar-container">
+        <div class="scarcity-bar-fill"></div>
+    </div>
+</div>
+                </div>
+
+                <div class="hero-image-container">
+                    <div class="proof-cloud">
+                        <div class="proof-item">
+                            <div style="background:#00D64B; border-radius:50%; width:10px; height:10px;"></div>
+                            <div class="pix-info"><b>Pix Recebido</b><span>R$ 39,90</span></div>
+                        </div>
+                        <div class="proof-item testimonial-bubble">
+                            <p>"Mudou meu raciocínio!"</p>
+                        </div>
+                        <div class="proof-item">
+                            <div style="background:#00D64B; border-radius:50%; width:10px; height:10px;"></div>
+                            <div class="pix-info"><b>Venda Aprovada</b><span>R$ 39,90</span></div>
+                        </div>
+                        <div class="proof-item testimonial-bubble">
+                            <p>"Atendimento nota 10"</p>
+                        </div>
+						    <div class="proof-item">
+                            <div style="background:#00D64B; border-radius:50%; width:10px; height:10px;"></div>
+                            <div class="pix-info"><b>Pix Recebido</b><span>R$ 39,90</span></div>
+                        </div>
+                        <div class="proof-item">
+                            <div style="background:#00D64B; border-radius:50%; width:10px; height:10px;"></div>
+                            <div class="pix-info"><b>Inscrição Confirmada</b><span>R$ 39,90</span></div>
+                        </div>
+                        <div class="proof-item testimonial-bubble">
+                            <p>"Finalmente clareza!"</p>
+                        </div>
+                        <div class="proof-item">
+                            <div style="background:#00D64B; border-radius:50%; width:10px; height:10px;"></div>
+                            <div class="pix-info"><b>Pix Recebido</b><span>R$ 39,90</span></div>
+                        </div>
+                        <div class="proof-item testimonial-bubble">
+                            <p>"Melhor investimento"</p>
+                        </div>
+                        <div class="proof-item">
+                            <div style="background:#00D64B; border-radius:50%; width:10px; height:10px;"></div>
+                            <div class="pix-info"><b>Venda Aprovada</b><span>R$ 39,90</span></div>
+                        </div>
+                        <div class="proof-item">
+                            <div style="background:#00D64B; border-radius:50%; width:10px; height:10px;"></div>
+                            <div class="pix-info"><b>Inscrição Confirmada</b><span>R$ 39,90</span></div>
+                        </div>
+						    <div class="proof-item">
+                            <div style="background:#00D64B; border-radius:50%; width:10px; height:10px;"></div>
+                            <div class="pix-info"><b>Pix Recebido</b><span>R$ 39,90</span></div>
+                        </div>
+                    </div>
+                    <img src="foto-hero-elisabeth-sem-fundo2.png" alt="Elisabeth Pinheiro" class="expert-img">
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- BLOCO DE TRANSIÇÃO (VERSÃO ELEGANTE) -->
+<section class="ponte-premium">
+    <div class="ponte-container">
+        
+        <div class="elegant-divider"></div>
+        
+        <span class="eyebrow">A Realidade do Mercado</span>
+        <h2>O raciocínio clínico que <span>faltava na sua prática.</span></h2>
+        
+        <div class="ponte-grid">
+            <div class="ponte-col">
+                <p>
+                    Você já estudou. Já se formou. Já atende pacientes. Mas na hora de estruturar o tratamento com clareza… <strong>você ainda sente que falta algo.</strong>
+                </p>
+            </div>
+            
+            <div class="middle-line"></div>
+            
+            <div class="ponte-col">
+                <p>
+                    A insegurança de "tentar e ajustar" termina aqui. Chegou a hora de dominar uma metodologia construída na <strong>prática clínica real</strong>, sem depender de aparelhos caros.
+                </p>
+            </div>
+        </div>
+        <p class="ponte-footer-text">
+            "Fisioterapeutas do Brasil inteiro estão transformando sua prática clínica com base neste método."
+        </p>
+    </div>
+</section>
+
+<!-- BLOCO 3: QUEM DEVE ESTAR NESSA SALA (DESIGN EVOLUÍDO) -->
+<section class="perfil-section">
+    <div class="container">
+        
+        <div class="perfil-intro">
+            <h2>Esta Masterclass é pra <span class="headline-gradient">você que:</span></h2>
+        </div>
+
+        <div class="diagnostico-grid-premium">
+            
+            <!-- Card 1 -->
+            <div class="diag-card">
+                <div class="diag-check">✓</div>
+                <h3>Não sabe por onde começar</h3>
+                <p>Você até conhece as técnicas, mas na hora da prática você trava. Sente que falta clareza para estruturar um tratamento do zero com segurança.</p>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="diag-card">
+                <div class="diag-check">✓</div>
+                <h3>Não gera resultado consistente</h3>
+                <p>Você aplica o que sabe, tenta ajustar, mas sente que o paciente não evolui como deveria. Isso mina sua confiança e o seu valor percebido.</p>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="diag-card">
+                <div class="diag-check">✓</div>
+                <h3>Acredita que precisa de estrutura</h3>
+                <p>Você ainda nutre a crença de que, sem uma clínica montada, aparelhos de última geração ou ambiente ideal, não é possível entregar um bom resultado.</p>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="diag-card">
+                <div class="diag-check">✓</div>
+                <h3>Quer cobrar mais, mas tem medo</h3>
+                <p>Você sabe que merece ser mais valorizado, mas não se sente seguro com seu resultado clínico atual para cobrar o preço de um especialista.</p>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+<!-- BLOCO 4: O QUE VOCÊ VAI APRENDER -->
+<section class="learning-section">
+    <div class="container">
+        
+        <div class="learning-intro" style="text-align: center; width: 100%; margin-bottom: 60px;">
+    <h2 class="section-title" style="color: white; margin: 0 auto; display: inline-block;">
+        O que você vai <span class="headline-gradient">aprender?</span>
+    </h2>
+</div>
+        <div class="learning-grid-v2">
+            
+            <!-- Lado Esquerdo: Conteúdo -->
+            <div class="learning-text">
+                <h3>O Jeito Roots de Pensar a Dor, Gerar Resultado e Cobrar Mais na Fisioterapia</h3>
+                <p class="learning-description">
+                    Em um único dia, você vai aprender a construir um raciocínio clínico mais claro, simples e aplicável para sair da tentativa e erro e começar a conduzir atendimentos com mais segurança, resultado e percepção de valor.
+                </p>
+
+                <div class="roots-topics-list">
+                    <div class="topic-item">
+                        <div class="topic-icon">✓</div>
+                        <span>Como avaliar um paciente sem depender de protocolo engessado</span>
+                    </div>
+                    <div class="topic-item">
+                        <div class="topic-icon">✓</div>
+                        <span>Como pensar a dor de forma mais simples, estratégica e funcional</span>
+                    </div>
+                    <div class="topic-item">
+                        <div class="topic-icon">✓</div>
+                        <span>Como gerar resultado com o básico bem feito</span>
+                    </div>
+                    <div class="topic-item">
+                        <div class="topic-icon">✓</div>
+                        <span>Como conduzir o tratamento sem depender de estrutura</span>
+                    </div>
+                    <div class="topic-item">
+                        <div class="topic-icon">✓</div>
+                        <span>Como aumentar sua segurança clínica e sua percepção de valor</span>
+                    </div>
+                    <div class="topic-item">
+                        <div class="topic-icon">✓</div>
+                        <span>Por que fisioterapeutas que geram resultado conseguem aumentar o ticket cobrando até 3x mais</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lado Direito: Cronograma -->
+            <div class="schedule-side">
+                <div class="schedule-card">
+                    <div class="schedule-header">
+                        <div class="date-circle">
+                            <span class="day">23</span>
+                            <span class="month">Maio</span>
+                        </div>
+                        <h4 style="color: #fff; margin-bottom: 5px;">Cronograma do Evento</h4>
+                        <p style="color: #666; font-size: 0.85rem;">Sábado, das 09h às 17h</p>
+                    </div>
+
+                    <div class="schedule-table">
+                        <div class="schedule-row">
+                            <span class="schedule-time">09:00</span>
+                            <span class="schedule-event">Abertura</span>
+                        </div>
+                        <div class="schedule-row">
+                            <span class="schedule-time">12:30</span>
+                            <span class="schedule-event">Almoço</span>
+                        </div>
+                        <div class="schedule-row">
+                            <span class="schedule-time">14:00</span>
+                            <span class="schedule-event">Retorno</span>
+                        </div>
+                        <div class="schedule-row" style="border-bottom: none;">
+                            <span class="schedule-time">17:00</span>
+                            <span class="schedule-event">Encerramento</span>
+                        </div>
+                    </div>
+
+                    <p class="schedule-disclaimer">
+                        *Caso o grupo queira aprofundar algum tema, o horário de encerramento pode se estender conforme a necessidade. Porém todo o conteúdo será entregue dentro do combinado.
+                    </p>
+
+                    <div style="margin-top: 30px;">
+                        <a href="#oferta" class="btn-cta" style="width: 100%; justify-content: center; padding: 15px;">
+                            <div class="btn-text-container">
+                                <span class="btn-main-text" style="font-size: 1rem;">Garanta Sua Vaga</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section><!-- BLOCO 7: O QUE ESTÁ INCLUSO + PREÇO (VERSÃO VITRINE) -->
+<section class="incluso-section">
+    <div class="bg-text-watermark">METODOLOGIA ROOTS</div>
+    
+    <div class="container">
+        
+        <!-- Cabeçalho da Seção (Preenche o topo) -->
+        <div style="text-align: center; margin-bottom: 80px; position: relative; z-index: 2;">
+            <span class="roots-badge">Arsenal Completo</span>
+            <h2 style="font-size: 3rem; color: #fff; margin-top: 20px;">Tudo o que você precisa para <br><span class="headline-gradient">dominar o raciocínio clínico.</span></h2>
+        </div>
+
+        <div class="incluso-grid-v5">
+            
+            <!-- Lado Esquerdo: Vitrine do Ingresso -->
+            <div class="ticket-showcase">
+                <!-- Elementos flutuantes para "encher" o layout -->
+                <div class="floating-element f-1">✓ 8h DE CONTEÚDO</div>
+                <div class="floating-element f-2">✓ MATERIAL EM PDF</div>
+                
+                <img src="ingresso.png" alt="Ingresso Masterclass" class="ticket-main-img" style="max-width: 100%; height: auto; filter: drop-shadow(0 30px 60px rgba(0,0,0,0.8));">
+            </div>
+
+            <!-- Lado Direito: Card de Oferta (Glassmorphism) -->
+            <div class="offer-glass-card" style="background: rgba(15,15,15,0.7); backdrop-filter: blur(20px); border: 1px solid rgba(174,144,82,0.2); border-radius: 40px; padding: 50px;">
+                <h4 style="color: #fff; font-size: 1.6rem; margin-bottom: 30px;">O que você está destravando:</h4>
+                
+                <ul class="incluso-list-premium">
+                    <li class="incluso-item-v4">
+                        <div class="check-icon-v4">✓</div>
+                        <span><b>Imersão Ao Vivo:</b> 8 horas de conteúdo prático no Google Meet.</span>
+                    </li>
+                    <li class="incluso-item-v4">
+                        <div class="check-icon-v4">✓</div>
+                        <span><b>Certificação:</b> Certificado digital de 8h para seu currículo.</span>
+                    </li>
+                    <li class="incluso-item-v4">
+                        <div class="check-icon-v4">✓</div>
+                        <span><b>Comunidade:</b> Grupo VIP no WhatsApp para networking e suporte.</span>
+                    </li>
+                    <li class="incluso-item-v4">
+                        <div class="check-icon-v4">✓</div>
+                        <span><b>Material Roots:</b> Guia prático em PDF para aplicar na segunda-feira.</span>
+                    </li>
+                </ul>
+
+                <div class="price-tag-container" style="margin-top: 40px; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.05); text-align: center;">
+                    <span class="old-price-v4" style="text-decoration: line-through; color: #666;">De R$ 197,00</span>
+                    <div class="price-main-v4" style="font-size: 4rem; font-weight: 900; color: #fff; margin: 10px 0;"><small style="font-size: 1.5rem;">R$</small>39,90</div>
+                    
+                    <a href="#oferta" class="btn-cta" style="width: 100%; justify-content: center; padding: 20px;">
+                        <div class="btn-text-container">
+                            <a href="https://pay.hotmart.com/X105400053A?checkoutMode=10" class="btn-cta" style="width: 100%;">GARANTA SUA VAGA</a>
+                        </div>
+                    </a>
+                </div>
+				
+            </div>
+        </div>
+
+        <!-- Barra de Confiança Inferior (Preenche a largura) -->
+        <div class="trust-badges-row">
+            <div class="badge-item">
+                <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
+                <div class="badge-text"><b>Compra Segura</b><span>Ambiente criptografado</span></div>
+            </div>
+            <div class="badge-item">
+                <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+                <div class="badge-text"><b>Acesso Imediato</b><span>Receba os dados no e-mail</span></div>
+            </div>
+            <div class="badge-item">
+                <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                <div class="badge-text"><b>Satisfação</b><span>7 dias de garantia total</span></div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- BLOCO DEPOIMENTOS — CARROSSEL AUTOMÁTICO INFINITO -->
+<section class="depo-section">
+    <div class="container">
+        <div class="depo-section-header">
+            <span class="roots-badge">Resultados Reais</span>
+            <h2 style="color: white !important;">Feedback de quem já aplicou a <span class="headline-gradient">Metodologia Roots</span></h2>
+        </div>
+    </div>
+
+    <!-- Container do Carrossel -->
+    <div class="carousel-viewport">
+        <div class="carousel-track">
+            <!-- GRUPO 1 de Imagens (1 a 12) -->
+            <div class="carousel-item"><img src="depo1.jpeg" alt="Depoimento"></div>
+            <div class="carousel-item"><img src="depo2.jpeg" alt="Depoimento"></div>
+            <div class="carousel-item"><img src="depo3.jpeg" alt="Depoimento"></div>
+            <div class="carousel-item"><img src="depo4.jpeg" alt="Depoimento"></div>
+            <div class="carousel-item"><img src="depo5.jpeg" alt="Depoimento"></div>
+            <div class="carousel-item"><img src="depo6.jpeg" alt="Depoimento"></div>
+            <div class="carousel-item"><img src="depo7.jpeg" alt="Depoimento"></div>
+            <div class="carousel-item"><img src="depo8.jpeg" alt="Depoimento"></div>
+            <div class="carousel-item"><img src="depo9.jpeg" alt="Depoimento"></div>
+            <div class="carousel-item"><img src="depo10.jpeg" alt="Depoimento"></div>
+            <div class="carousel-item"><img src="depo11.jpeg" alt="Depoimento"></div>
+            <div class="carousel-item"><img src="depo12.jpeg" alt="Depoimento"></div>
+            
+            <!-- GRUPO 2 (Repetição idêntica para o loop infinito não ter saltos) -->
+            <div class="carousel-item"><img src="depo1.jpeg" alt="Depoimento"></div>
+            <div class="carousel-item"><img src="depo2.jpeg" alt="Depoimento"></div>
+            <div class="carousel-item"><img src="depo3.jpeg" alt="Depoimento"></div>
+            <div class="carousel-item"><img src="depo4.jpeg" alt="Depoimento"></div>
+            <div class="carousel-item"><img src="depo5.jpeg" alt="Depoimento"></div>
+            <div class="carousel-item"><img src="depo6.jpeg" alt="Depoimento"></div>
+            <div class="carousel-item"><img src="depo7.jpeg" alt="Depoimento"></div>
+            <div class="carousel-item"><img src="depo8.jpeg" alt="Depoimento"></div>
+            <div class="carousel-item"><img src="depo9.jpeg" alt="Depoimento"></div>
+            <div class="carousel-item"><img src="depo10.jpeg" alt="Depoimento"></div>
+            <div class="carousel-item"><img src="depo11.jpeg" alt="Depoimento"></div>
+            <div class="carousel-item"><img src="depo12.jpeg" alt="Depoimento"></div>
+        </div>
+    </div>
+
+</section>
+<!-- SEÇÃO DE POSICIONAMENTO DO INVESTIMENTO -->
+<section class="posicionamento-roots">
+    <div class="aura-bg"></div>
+    <div class="container">
+        
+        <span class="roots-badge" style="margin-bottom: 30px;">O Próximo Passo</span>
+        
+        <h2>O investimento é simbólico. <br><span class="headline-gradient">O valor da transformação, não.</span></h2>
+
+        <div class="manifesto-text">
+            <p>O preço foi pensado para ser acessível de propósito. O objetivo aqui não é lucrar, é reunir fisioterapeutas que estão prontos para pensar diferente e gerar resultado de verdade.</p>
+            
+            <div class="manifesto-quote">
+                "Cobrar mais não começa na estrutura, nem no tempo de profissão. Começa no resultado que você entrega e é exatamente isso que você vai aprender aqui."
+            </div>
+
+            <p>Se você quer sair da insegurança clínica e se posicionar para cobrar o que você vale, fisioterapeuta, este evento é o seu próximo passo.</p>
+        </div>
+
+        <div style="margin-top: 60px;">
+            <a href="#oferta" class="btn-cta" style="display: inline-flex; min-width: 320px; justify-content: center;">
+                <div class="btn-text-container">
+                    <span class="btn-main-text" style="font-size: 1.1rem;">Garanta Sua Vaga | R$39,90 ↓</span>
+                    <span class="btn-sub-text">Vagas limitadas · Sem garantia de nova turma</span>
+                </div>
+            </a>
+        </div>
+		
+    </div>
+</section>
+
+<!-- SEÇÃO GARANTIA -->
+<section class="garantia-roots">
+    <div class="container">
+        <div class="garantia-card-v5">
+            <!-- Ícone de Proteção -->
+            <svg class="seal-img" viewBox="0 0 24 24" fill="none" stroke="#ae9052" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                <path d="M9 12l2 2 4-4"/>
+            </svg>
+
+            <h3>7 dias de garantia!</h3>
+            
+            <p>Participe do evento, assista ao conteúdo e, se você sentir que não é para você, basta falar com a nossa equipe dentro de 7 dias da data de compra e devolveremos 100% do valor do seu ingresso.</p>
+            
+            <p style="font-weight: 700; color: #fff !important; font-size: 1.3rem;">
+                Sem perguntas. <br>
+                Sem complicação. <br>
+                <span class="headline-gradient">O risco é todo nosso.</span>
+            </p>
+
+            <div class="risk-stamp">Segurança Total</div>
+        </div>
+    </div>
+</section>
+
+<!-- BLOCO 2: PROPOSTA DIRETA — fade para preto no final 
+<section class="proposta-direta">
+    <div class="container">
+        <div class="proposta-wrapper">
+            
+            <div class="text-box-float">
+                <span class="roots-badge" style="background: #000; color: #fff;">O PRÓXIMO NÍVEL</span>
+                
+                <h2>Domine o que gera <span class="headline-gradient">resultados</span> na prática.</h2>
+                
+                <div class="vertical-gold-bar">
+                    <p>
+                        Esqueça protocolos engessados. A <strong>Metodologia Roots</strong> te dá o raciocínio para tratar a dor com o que você tem agora, transformando insegurança em <strong>valorização profissional.</strong>
+                    </p>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <div class="benefit-item" style="background: none; padding: 0; border: none;">
+                        <span style="font-size: 0.9rem;">
+                            <strong style="color: var(--primary-gold);">+ FATURAMENTO</strong>
+                            Cobre até 3x mais por sessão.
+                        </span>
+                    </div>
+                    <div class="benefit-item" style="background: none; padding: 0; border: none;">
+                        <span style="font-size: 0.9rem;">
+                            <strong style="color: var(--primary-gold);">+ LIBERDADE</strong>
+                            Atenda em qualquer lugar.
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="image-focus-area">
+                <div class="img-bg-glow"></div>
+                <img src="elisabeth-imagem-para-bloco2.jpg" alt="Elisabeth Pinheiro Fisioterapia" class="expert-action-img">
+            </div>
+
+        </div>
+    </div>
+</section>
+-->
+
+<!-- BLOCO 6: SOBRE A EXPERT -->
+<section class="expert-section">
+    <div class="divisor-papel"></div>
+    <div class="container">
+        <div class="expert-layout">
+            
+            <div class="postit-gallery">
+    <div class="postit-item pi-1">
+        <img src="mao-no-queixo.png" alt="Elisabeth Pinheiro">
+    </div>
+    <div class="postit-item pi-2">
+        <img src="tomando-cafe.png" alt="Atendimento Roots">
+    </div>
+    
+    <!-- NOVA IMAGEM NO MEIO -->
+    <div class="postit-item pi-5">
+        <img src="foto-elisabeth-hero3.jpg" alt="Elisabeth Masterclass">
+    </div>
+
+    <div class="postit-item pi-3">
+        <img src="olhando-pro-lado.png" alt="Detalhe Técnico">
+    </div>
+    <div class="postit-item pi-4">
+        <img src="livro-na-mao.png" alt="Elisabeth Roots">
+    </div>
+</div>
+            <div class="expert-bio">
+                <span class="roots-badge">Quem será sua mentora?</span>
+                <h2>Quem é <span class="headline-gradient">Elisabeth Pinheiro?</span></h2>
+                
+                <p>Elisabeth Pinheiro é fisioterapeuta, empresária e criadora da <strong>Metodologia Roots</strong> — um método que nasceu da prática clínica real e da busca por uma fisioterapia mais simples, inteligente e eficaz.</p>
+
+                <p>Sua história na fisioterapia não começou de forma óbvia. Depois de anos tentando medicina, entrou no curso sem imaginar que encontraria ali sua verdadeira vocação. Foi na vivência clínica, no contato com os pacientes e na busca incessante por respostas melhores que Elisabeth construiu a base do que hoje ensina.</p>
+                
+                <p>Ao longo da sua trajetória, mergulhou em formações de terapia manual, reabilitação musculoesquelética e movimento natural, até encontrar um caminho que transformou completamente sua forma de tratar: <strong>menos dependência de estrutura, mais raciocínio clínico, mais clareza na avaliação e mais resultado com o simples bem feito.</strong></p>
+                
+                <p>Hoje, Elisabeth ensina fisioterapeutas a abandonarem a dependência de protocolos engessados e mostra que é possível gerar resultados e cobrar até 3x mais usando só o chão e uma faixa elástica.</p>
+
+                <div class="signature-roots">Elisabeth Pinheiro</div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<!-- FAQ PREMIUM -->
+<section class="faq-section">
+    <div class="container" style="max-width:800px;">
+        <div style="text-align:center; margin-bottom: 50px;">
+            <span class="roots-badge">Tire suas dúvidas</span>
+            <h2 style="color: white !important; margin-top: 15px;">Ainda tem dúvidas? <span class="headline-gradient">A gente responde.</span></h2>
+            <p style="color: #B0B0B0 !important;">Tudo o que você precisa saber sobre a Masterclass Roots.</p>
+        </div>
+
+        <div class="faq-grid">
+            <details>
+                <summary>Esse evento é só para quem já atende? <span class="faq-icon"></span></summary>
+                <div class="faq-content">
+                    <p>Não. O conteúdo foi pensado tanto para fisioterapeutas que já atendem quanto para quem ainda está iniciando (estudantes ou recém-formados), para que você construa sua carreira com segurança clínica desde o primeiro dia.</p>
+                </div>
+            </details>
+
+            <details>
+                <summary>Vou aprender só sobre tratamento? <span class="faq-icon"></span></summary>
+                <div class="faq-content">
+                    <p>Não. Você vai entender como avaliar melhor, pensar a dor com mais clareza, gerar resultado real e, principalmente, como usar esses resultados para aumentar sua percepção de valor e autoridade como profissional.</p>
+                </div>
+            </details>
+
+            <details>
+                <summary>Esse evento vai me ajudar a cobrar mais? <span class="faq-icon"></span></summary>
+                <div class="faq-content">
+                    <p>Sim! Cobrar mais não começa no preço, começa na sua segurança e no resultado que o paciente sente. Você vai aprender o posicionamento necessário para ser valorizado e cobrar o que seu trabalho realmente vale.</p>
+                </div>
+            </details>
+
+            <details>
+                <summary>Como funciona a garantia e o reembolso? <span class="faq-icon"></span></summary>
+                <div class="faq-content">
+                    <p>Você tem 7 dias de garantia total. Se por qualquer motivo sentir que não é para você, devolvemos 100% do valor. No dia do evento, você pode solicitar o reembolso até as 13h (pausa do almoço). Após o retorno das 14h, não haverá mais estorno.</p>
+                </div>
+            </details>
+
+            <details>
+                <summary>A Masterclass vai ficar gravada? <span class="faq-icon"></span></summary>
+                <div class="faq-content">
+                    <p>Sim, mas o ingresso básico não inclui a gravação. Você pode adquirir o acesso vitalício às gravações por um valor promocional de R$97,00 no momento da compra ou durante o evento. Quem adquire recebe o acesso em até 7 dias após o ao vivo.</p>
+                </div>
+            </details>
+
+            <details>
+                <summary>O evento oferece certificado? <span class="faq-icon"></span></summary>
+                <div class="faq-content">
+                    <p>Sim! Todos os participantes recebem um certificado digital de participação de 8 horas, emitido após a conclusão do evento, ideal para turbinar seu currículo e comprovar sua atualização profissional.</p>
+                </div>
+            </details>
+        </div>
+        
+        <div style="text-align:center; margin-top:40px;">
+            <p style="color: #666; font-size: 0.9rem;">Ainda tem outra pergunta? <a href="https://wa.me/SEUNUMERO" style="color: #ae9052; text-decoration: underline;">Fale com o suporte no WhatsApp</a></p>
+        </div>
+    </div>
+</section>
+
+    <!-- FOOTER -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-info">
+                    <h4>METODOLOGIA ROOTS</h4>
+                    <p>Um treinamento focado em transformar a prática clínica através do raciocínio clínico e movimento natural. Saia da insegurança para se tornar uma referência em resultados.</p>
+                </div>
+                <div class="footer-info" style="text-align: right;">
+                    <h4>CONTATO E SUPORTE</h4>
+                    <p>Dúvidas sobre sua inscrição?<br>
+                    E-mail: suporte@elisabethpinheiro.com.br<br>
+                    WhatsApp: (00) 00000-0000</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 ELISABETH PINHEIRO • TODOS OS DIREITOS RESERVADOS</p>
+                <p style="margin-top: 10px; opacity: 0.5;">Termos de Uso | Políticas de Privacidade</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        gsap.utils.toArray("section").forEach(section => {
+            gsap.from(section, {
+                opacity: 0,
+                y: 30,
+                duration: 1,
+                scrollTrigger: {
+                    trigger: section,
+                    start: "top 80%",
+                }
+            });
+        });
+
+        gsap.utils.toArray(".depo-item").forEach((item, i) => {
+            gsap.from(item, {
+                opacity: 0,
+                y: 20,
+                duration: 0.5,
+                delay: i * 0.04,
+                scrollTrigger: {
+                    trigger: item,
+                    start: "top 92%",
+                }
+            });
+        });
+
+        window.onscroll = function() {
+            var btn = document.getElementById("floatBtn");
+            if (window.scrollY > 600) {
+                btn.style.display = "block";
+            } else {
+                btn.style.display = "none";
+            }
+        };
+        // Animação de revelação para o Manifesto
+gsap.from(".reveal-text", {
+    scrollTrigger: {
+        trigger: ".reveal-text",
+        start: "top 85%",
+    },
+    y: 50,
+    opacity: 0,
+    duration: 1.5,
+    ease: "power4.out"
+});
+
+gsap.from(".manifesto-highlight", {
+    scrollTrigger: {
+        trigger: ".manifesto-highlight",
+        start: "top 90%",
+    },
+    scale: 0.9,
+    opacity: 0,
+    duration: 1,
+    ease: "back.out(1.7)"
+});
+
+gsap.from(".guarantee-card-v4", {
+    scrollTrigger: {
+        trigger: ".guarantee-card-v4",
+        start: "top 85%",
+    },
+    y: 100,
+    opacity: 0,
+    duration: 1.2,
+    ease: "power3.out"
+});
+// Animação da Lista de Inclusos
+gsap.from(".incluso-item-v4", {
+    scrollTrigger: {
+        trigger: ".incluso-list-premium",
+        start: "top 80%",
+    },
+    x: 30,
+    opacity: 0,
+    duration: 0.8,
+    stagger: 0.2, // Faz um aparecer depois do outro
+    ease: "power2.out"
+});
+
+// Animação do Ingresso entrando de lado
+gsap.from(".ticket-main-img", {
+    scrollTrigger: {
+        trigger: ".ticket-visual-wrapper",
+        start: "top 80%",
+    },
+    x: -100,
+    rotate: -10,
+    opacity: 0,
+    duration: 1.5,
+    ease: "power4.out"
+});
+// Lógica do Zoom nos Depoimentos
+const modal = document.getElementById("zoom-modal");
+const modalImg = document.getElementById("img-zoom-target");
+const closeBtn = document.querySelector(".zoom-close");
+
+// Seleciona todas as imagens do carrossel
+document.querySelectorAll('.carousel-item img').forEach(img => {
+    img.onclick = function() {
+        modal.style.display = "flex";
+        modalImg.src = this.src;
+        // Pausa o carrossel ao abrir a foto (opcional)
+        document.querySelector('.carousel-track').style.animationPlayState = 'paused';
+    }
+});
+
+// Fecha ao clicar no 'X'
+closeBtn.onclick = function() {
+    fecharModal();
+}
+
+// Fecha ao clicar fora da imagem
+modal.onclick = function(e) {
+    if (e.target !== modalImg) {
+        fecharModal();
+    }
+}
+
+function fecharModal() {
+    modal.style.display = "none";
+    // Retoma o carrossel ao fechar
+    document.querySelector('.carousel-track').style.animationPlayState = 'running';
+}
+
+// Fecha com a tecla ESC
+document.addEventListener('keydown', function(e) {
+    if (e.key === "Escape") {
+        fecharModal();
+    }
+});
+    </script>
+</body>
+</html>
